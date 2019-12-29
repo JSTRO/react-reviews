@@ -4,7 +4,7 @@ const app = express()
 const sqlite3 = require('sqlite3').verbose()
 
 const path = require('path')
-const dbPath = path.resolve(__dirname, 'database.sqlite')
+const dbPath = path.resolve(__dirname, 'reviews.sqlite')
 
 const port = 3000
 
@@ -17,7 +17,7 @@ let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
 });
 
 app.get('/', cors(), (req, res, next) => {
-	const sql = 'select * from reviews limit 100'
+	const sql = 'SELECT * FROM reviews LIMIT 5000'
 
 	db.all(sql, (err, rows) => {
 	    if (err) {

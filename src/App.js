@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import Search from './components/Search'
+import Form from './components/Form'
 import Review from './components/Review'
 import './App.css'
 
@@ -7,18 +7,34 @@ function App() {
 
   const [data, setData] = useState([])
   const [search, setSearch] = useState("")
-  //const [sort, setSort] = useState(false)
+  const [sortValue, setSortValue] = useState("")
+  const [yearFilter, setYearFilter] = useState([])
+  const [BNMFilter, setBNMFilter] = useState(false)
+  const [authorFilter, setAuthorFilter] = useState("")
 
   const handleChange = event => {
     const {value} = event.target
-    return setSearch(value)
+    setSearch(value)
   }
 
   const handleSort = event => {
     const {value} = event.target
-    const sortedData = data.map(review => review.value).sort()
-    //setSort(true)
-    //setData(sortedData)
+    setSortValue(value)
+  }
+
+  const handleYearFilter = event => {
+    const name = parseInt(event.target.name) // SEEMS WRONG TO USE NAME INSTEAD OF VALUE?
+    setYearFilter(prev => prev.includes(name) ? prev.filter(el => el !== name) : [...prev, parseInt(name)])   
+  }
+
+  const toggleBNMFilter = () => {
+    setBNMFilter(prev => !prev)
+  }
+
+  const handleAuthorFilter = event => {
+    const {name} = event.target
+    console.log(name)
+    setAuthorFilter(name)
   }
 
   useEffect(() => {
@@ -28,23 +44,40 @@ function App() {
       .catch(e => console.log(e))
   }, [])
 
-  const filteredTitles = data.filter(review => review.title.includes(search) || review.artist.includes(search))
+  const filtered = data
+    .sort((a, b) => a[sortValue] > b[sortValue] ? 1 : -1)
+    .filter(review => search !== "" ? review.title.includes(search) || review.artist.includes(search) : review)
+    .filter(review => yearFilter.includes(review.pub_year)) 
+    .filter(review => BNMFilter ? review.best_new_music === 1 : review)
+    .filter(review => authorFilter ? authorFilter === review.author : review)
 
-  const titles = filteredTitles.map(review => {
+  const scores = filtered.map(review => review.score)
+
+  const numReviews = filtered.length
+
+  const meanScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length * 10) / 10
+
+  const reviews = filtered.map(review => {
     return (
-      <Review key={review.id} data={review} />
+      <Review key={review.reviewid} data={review} />
     )
   })
 
   return (
     <div>
-      <Search 
+      <h3>Pitchfork Reviews</h3>
+      <Form 
         search={search} 
-        handleChange={handleChange} 
+        handleChange={handleChange}
+        handleYearFilter={handleYearFilter}
+        handleAuthorFilter={handleAuthorFilter}  
+        toggleBNMFilter={toggleBNMFilter} 
         handleSort={handleSort}
         data={data}
       />
-      <ol>{titles}</ol>
+      <p># of Reviews: {numReviews}</p>
+      <p>Mean Score: {meanScore}</p>
+      <ol>{reviews}</ol>
     </div>
   )
 }

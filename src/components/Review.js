@@ -1,13 +1,15 @@
 import React from "react"
+import '../App.css'
 
 function Review({data}) {
-	const {artist, title, pub_year, url, score} = data
+	const {artist, title, pub_year, url, score, review_img} = data
 	return (
-		<>
+		<div className="review-item">
 			<li>
-				<strong>{artist}</strong> - <a href={url}>{title}</a> ({score}), {pub_year}
+				<img src={review_img} alt={review_img}></img>
+				<strong>{artist}</strong> - <a href={url} target="blank">{title}</a> ({pub_year}), <strong>{score}</strong>
 			</li>
-		</>
+		</div>
 	)
 }
 
