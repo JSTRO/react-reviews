@@ -1,9 +1,6 @@
 import React from "react"
 
-function Search(props) {
-
-	const {search, handleChange} = props
-
+function Search({search, handleChange}) {
 	return (
 		<input
 	  type="text"

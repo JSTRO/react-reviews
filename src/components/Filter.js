@@ -23,13 +23,13 @@ function Filter({data, handleYearFilter, handleAuthorFilter, toggleBNMFilter}) {
     return [...new Set(authors)].sort()
   }
 
-  const authorOptions = getAuthors().map(author => {
-    return <option value={author}>{author}</option>
-  })
+  const authorOptions = getAuthors().map(author => (
+    <option value={author}>{author}</option>
+  ))
 
 	return (
     <>
-  		{yearOptions}
+  		<p>{yearOptions}</p>
       <label>
         <input
           type="checkbox"

@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import Form from './components/Form'
-import Review from './components/Review'
+import ReviewList from './components/ReviewList'
+import Stats from './components/Stats'
 import './App.css'
 
 function App() {
 
   const [data, setData] = useState([])
+  const [filteredData, setFilteredData] = useState(data)
   const [search, setSearch] = useState("")
   const [sortValue, setSortValue] = useState("")
   const [yearFilter, setYearFilter] = useState([])
@@ -32,9 +34,8 @@ function App() {
   }
 
   const handleAuthorFilter = event => {
-    const {name} = event.target
-    console.log(name)
-    setAuthorFilter(name)
+    const {value} = event.target
+    setAuthorFilter(value)
   }
 
   useEffect(() => {
@@ -51,17 +52,7 @@ function App() {
     .filter(review => BNMFilter ? review.best_new_music === 1 : review)
     .filter(review => authorFilter ? authorFilter === review.author : review)
 
-  const scores = filtered.map(review => review.score)
-
-  const numReviews = filtered.length
-
-  const meanScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length * 10) / 10
-
-  const reviews = filtered.map(review => {
-    return (
-      <Review key={review.reviewid} data={review} />
-    )
-  })
+  useEffect(() => setFilteredData(filtered), [filtered.join(",")])
 
   return (
     <div>
@@ -75,11 +66,10 @@ function App() {
         handleSort={handleSort}
         data={data}
       />
-      <p># of Reviews: {numReviews}</p>
-      <p>Mean Score: {meanScore}</p>
-      <ol>{reviews}</ol>
+      <Stats filtered={filteredData}/>
+      <ReviewList filtered={filteredData}/>
     </div>
   )
 }
 
-export default App;
+export default App
