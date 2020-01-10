@@ -13,6 +13,7 @@ img {
   margin-right: 10px;
 }
 
-.review-item {
-	vertical-align: middle
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto;
 }

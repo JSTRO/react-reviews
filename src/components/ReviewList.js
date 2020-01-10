@@ -1,5 +1,6 @@
 import React from "react"
 import Review from "./Review"
+import '../App.css'
 
 function ReviewList({filtered}) {
 
@@ -10,7 +11,9 @@ function ReviewList({filtered}) {
 	})
 
 	return (
-		<ol>{reviews}</ol>
+		<div className="grid-container">
+			{reviews}
+		</div>	
 	)
 }
 
