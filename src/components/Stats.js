@@ -2,11 +2,9 @@ import React from "react"
 
 function Stats({filtered}) {
 
+	const numReviews = filtered.length
   const scores = filtered.map(review => review.score)
-
-  const numReviews = filtered.length
-
-  const meanScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length * 10) / 10
+  const meanScore = filtered.length === 0 ? "N/A" : Math.round(scores.reduce((a, b) => a + b, 0) / scores.length * 10) / 10
 
 	return (
 		<div>	

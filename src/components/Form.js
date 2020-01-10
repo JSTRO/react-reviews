@@ -12,8 +12,10 @@ function Form(props) {
 		handleSort, 
 		handleYearFilter, 
 		handleAuthorFilter, 
-		toggleBNMFilter, 
-		data
+		toggleBNMFilter,
+		years, 
+		data,
+		filteredData
 	} = props
 
 	return (
@@ -21,7 +23,8 @@ function Form(props) {
       <Search search={search} handleChange={handleChange}/>
     	<Sort data={data} handleSort={handleSort} />
     	<Filter
-    		data={data} 
+    		filteredData={filteredData}
+    		years={years}
     		handleYearFilter={handleYearFilter} 
     		handleAuthorFilter={handleAuthorFilter}
     		toggleBNMFilter={toggleBNMFilter}

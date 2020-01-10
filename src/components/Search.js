@@ -1,12 +1,12 @@
 import React from "react"
 
-function Search({search, handleChange}) {
+function Search({search, handleSearch}) {
 	return (
 		<input
 	  type="text"
 	  name="search"
 	  value={search}
-	  onChange={handleChange}
+	  onChange={handleSearch}
 	  placeholder="Search..."
 		/>
 	)

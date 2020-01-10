@@ -1,35 +1,38 @@
 import React from "react"
 
-function Filter({data, handleYearFilter, handleAuthorFilter, toggleBNMFilter}) {
+function Filter(props) {
+  
+  const { 
+    filteredData,
+    yearFilter,
+    handleYearFilter, 
+    handleAuthorFilter, 
+    toggleBNMFilter
+  } = props
 
-  const getYears = () => {
-    const years = data.map(review => review.pub_year) 
-    return [...new Set(years)].sort()
-  }
-
-  const yearOptions = getYears().map(year => (
-    <label>
+  const yearCheckboxes = yearFilter.map(year => (
+    <label key={year.year}>
       <input
-        key={year.reviewid}
         type="checkbox"
-        name={year}
+        name={year.year}
+        checked={year.isChecked}
         onChange={handleYearFilter}
-      /> {year}
+      /> {year.year}
     </label>
   ))
 
   const getAuthors = () => {
-    const authors = data.map(review => review.author.trim()) 
+    const authors = filteredData.map(review => review.author.trim()) 
     return [...new Set(authors)].sort()
   }
 
   const authorOptions = getAuthors().map(author => (
-    <option value={author}>{author}</option>
+    <option key={author} value={author}>{author}</option>
   ))
 
 	return (
     <>
-  		<p>{yearOptions}</p>
+  		<div>{yearCheckboxes}</div>
       <label>
         <input
           type="checkbox"
