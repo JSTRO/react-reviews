@@ -1,14 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 import '../App.css'
 
-function Review({data}) {
-	const {artist, title, pub_year, url, score, review_img} = data
+function Review({review}) {
+
+	const {artist, title, pub_year, url, review_img, genre} = review
+
+	const [error, setError] = useState(false)
+
+	const onImageError = () =>{
+		setError(true)
+	}
+
+	let src = error ? 'https://via.placeholder.com/150' : review_img
+
 	return (
-		<div>
-			<img src={review_img} alt={review_img}></img>
-			<p>
-				<strong>{artist}</strong> - <a href={url} target="blank">{title}</a> ({pub_year}), <strong>{score}</strong>
-			</p>
+		<div className="grid-item">
+			<a href={url} target="blank">
+				<img src={src} alt={review_img} onError={onImageError}></img>
+				<p><strong>{artist}</strong></p>
+				<p><i>{title}</i></p>
+			</a>
+			<p>{genre}</p>
+			<p>{pub_year}</p>
 		</div>
 	)
 }

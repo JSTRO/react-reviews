@@ -1,8 +1,8 @@
 import React from "react"
 
-function Sort({data, handleSort}) {
+function Sort({reviews, handleSort}) {
 
-	const {artist, title, pub_year, score} = data
+	const {artist, title, pub_year, score} = reviews
 
 	return (
 		<select

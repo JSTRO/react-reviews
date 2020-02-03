@@ -1,16 +1,20 @@
 import React from "react"
+import useReviewSearch from '../hooks/useReviewSearch.js'
 
 function Filter(props) {
   
   const { 
-    filteredData,
+    search,
+    currentPage,
     yearFilter,
     handleYearFilter, 
     handleAuthorFilter, 
     toggleBNMFilter
   } = props
 
-  const yearCheckboxes = yearFilter.map(year => (
+  const { reviews } = useReviewSearch(search, currentPage)
+
+  const years = yearFilter.map(year => (
     <label key={year.year}>
       <input
         type="checkbox"
@@ -22,7 +26,7 @@ function Filter(props) {
   ))
 
   const getAuthors = () => {
-    const authors = filteredData.map(review => review.author.trim()) 
+    const authors = reviews.map(review => review.author) 
     return [...new Set(authors)].sort()
   }
 
@@ -32,7 +36,7 @@ function Filter(props) {
 
 	return (
     <>
-  		<div>{yearCheckboxes}</div>
+  		<div>{years}</div>
       <label>
         <input
           type="checkbox"
