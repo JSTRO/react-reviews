@@ -1,11 +1,8 @@
 import React, {useRef, useCallback} from "react"
 import Review from "./Review"
-import useReviewSearch from '../hooks/useReviewSearch.js'
 import '../App.css'
 
-function ReviewList({search, setCurrentPage, currentPage}) {
-
-	const {reviews, hasMore, loading, error} = useReviewSearch(search, currentPage)
+function ReviewList({reviews, hasMore, loading, error, setCurrentPage, currentPage}) {
 
 	const observer = useRef()
 	const lastReviewRef = useCallback(node => {
@@ -26,7 +23,7 @@ function ReviewList({search, setCurrentPage, currentPage}) {
 	}, [loading, hasMore, setCurrentPage])
 
 	return (
-   	<div>
+   	<div className="review-list">
    		<div>{loading && 'Loading...'}</div>
    		<div>{error && 'Error'}</div>
 	   	{reviews.map((review, index) => {

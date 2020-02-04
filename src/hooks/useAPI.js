@@ -7,7 +7,7 @@ export default function useAPI(url, params) {
 	const [reviews, setReviews] = useState([])
 	const [hasMore, setHasMore] = useState(false)
 
-	const baseURL = 'http://localhost:3000/api'
+	const baseURL = 'http://localhost:3000/api/reviews'
 
 	useEffect(() => {
 		setLoading(true)

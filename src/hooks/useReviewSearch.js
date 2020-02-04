@@ -1,9 +1,9 @@
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 import useAPI from './useAPI.js'
 
 export default function useReviewSearch(query, pageNumber) {
 	const {loading, error, hasMore, reviews, setReviews}
-		= useAPI('/reviews', { query: query, page: pageNumber, limit: 48 })
+		= useAPI('', { query: query, page: pageNumber, limit: 48 })
 
 	useEffect(() => {
 		setReviews([])
