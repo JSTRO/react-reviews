@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import { uniqBy } from 'lodash'
 
 export default function useAPI(url, params) {
 	const [loading, setLoading] = useState(true)
@@ -7,7 +8,7 @@ export default function useAPI(url, params) {
 	const [reviews, setReviews] = useState([])
 	const [hasMore, setHasMore] = useState(false)
 
-	const baseURL = 'http://localhost:3000/api/reviews'
+	const baseURL = 'http://localhost:3000/api'
 
 	useEffect(() => {
 		setLoading(true)
@@ -21,7 +22,7 @@ export default function useAPI(url, params) {
 		})
 		.then(res => {
 			setReviews(prevReviews => {
-				return [...new Set([...prevReviews, ...res.data.data])]
+				return uniqBy([...prevReviews, ...res.data.data], 'reviewid')
 			})
 			setHasMore(res.data.data.length > 0)	
 			setLoading(false)

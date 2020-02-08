@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import MenuItem from './MenuItem'
+import { Link, useHistory } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -59,50 +58,56 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Menu({search, setSearch, setCurrentPage}) {
-	
-	const handleSearch = event => {
-		const {value} = event.target
-		setSearch(value)
-		setCurrentPage(1)
-	}
+function Menu({setCurrentPage}) {
 
-	const classes = useStyles();
+	const classes = useStyles()
 
-	return (
+  const history = useHistory()
+
+  const handleSearch = event => {
+    const {value} = event.target
+    setCurrentPage(1)
+    history.push({
+      search: value
+    })
+  }
+
+	return ( 
 		<div className={classes.root}>
 			<AppBar position="fixed">
 	      <Toolbar>
 	        <Typography className={classes.title} variant="h6" noWrap>
 	          Pitchfork <strong>Reviews</strong>
 	        </Typography>
-	        <Link to="/reviews" className={classes.title}>
-            <Typography variant="subtitle2" noWrap>
+	        <Link to="/" className={classes.title}>
+            <Typography variant="subtitle1" noWrap>
                 ALL REVIEWS
             </Typography>
 	        </Link> 	
-	        <Link to="/reviews/best-new-music" className={classes.title}>	
-            <Typography variant="subtitle2" noWrap>
+	        <Link to="/best-new-music" className={classes.title}>	
+            <Typography variant="subtitle1" noWrap>
                 BEST NEW MUSIC
             </Typography>
-		      </Link>      
-		      <MenuItem name="GENRES" className={classes.title}/>
+		      </Link> 
+              
 	        <div className={classes.search}>
-	          <div className={classes.searchIcon}>
-	            <SearchIcon />
-	          </div>
-	          <InputBase
-	            placeholder="Search…"
-	            name="search"
-	            value={search}
-	            onChange={handleSearch}
-	            classes={{
-	              root: classes.inputRoot,
-	              input: classes.inputInput,
-	            }}
-	            inputProps={{ 'aria-label': 'search' }}
-	          />
-	        </div>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <Link to="/search"> 
+  	          <InputBase
+  	            placeholder="Search…"
+  	            name="search"
+  	            value={history.search}
+  	            onChange={handleSearch}
+  	            classes={{
+  	              root: classes.inputRoot,
+  	              input: classes.inputInput,
+  	            }}
+  	            inputProps={{ 'aria-label': 'search' }}
+  	          />
+            </Link>  
+          </div> 
 	      </Toolbar>
 	    </AppBar>
 	  </div>  
