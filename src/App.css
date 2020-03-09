@@ -4,7 +4,8 @@ h3 {
 }
 
 img {
-  width: 160px;
+  margin: auto;
+  width: 100%;
   height: auto;
 }
 
@@ -13,13 +14,13 @@ a {
   color: black;
 }
 
-a:hover {
+.grid-item a:hover {
   color: #3f51b5;
 }
 
 .grid-container {
   display: inline-grid;
-  grid-template-columns: repeat(5, auto)
+  grid-template-columns: repeat(5, auto);
 }
 
 .grid-item {
@@ -30,11 +31,27 @@ a:hover {
   text-align: center
 }
 
+.grid-item-colors {
+  text-align: center;
+  max-width: 80px;
+  height: auto;
+  text-align: center
+}
+
 .review-list {
   margin: 100px;
 }
 
-.author {
+.page {
   margin-top: 100px;
   text-align: center;
+}
+
+.author-type {
+  text-align: center;
+  color: gray;
+}
+
+.review-text {
+  margin: 0px 300px;
 }

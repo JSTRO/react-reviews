@@ -6,7 +6,7 @@ function Home() {
 
   const [currentPage, setCurrentPage] = useState(1)
 
-	const { reviews, hasMore, loading, error } = useAllReviews(currentPage)
+  const { reviews, hasMore, loading, error } = useAllReviews(currentPage)
 
 	return (
 		<ReviewList 

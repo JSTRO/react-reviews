@@ -16,14 +16,16 @@ let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
 	}
 })
 
-app.get(`/api`, cors(), (req, res, next) => {
-  let { limit = 50, page = 1 } = req.query
+app.use(cors())
+
+app.get(`/api`, (req, res, next) => {
+  let { limit = 48, page = 1 } = req.query
 
   limit = parseInt(limit)
   page = (parseInt(page) - 1) * limit
 
   const sql = `SELECT * FROM reviews 
-               JOIN genres on reviews.reviewid = genres.reviewid
+               JOIN genres ON reviews.reviewid = genres.reviewid
   						 LIMIT ? 
   						 OFFSET ?`
 
@@ -43,14 +45,14 @@ app.get(`/api`, cors(), (req, res, next) => {
   })
 })
 
-app.get(`/api/best-new-music`, cors(), (req, res, next) => {
-  let { limit = 50, page = 1 } = req.query
+app.get(`/api/best-new-music`, (req, res, next) => {
+  let { limit = 48, page = 1 } = req.query
 
   limit = parseInt(limit)
   page = (parseInt(page) - 1) * limit
 
   const sql = `SELECT * FROM reviews 
-               JOIN genres on reviews.reviewid = genres.reviewid
+               JOIN genres ON reviews.reviewid = genres.reviewid
   						 WHERE best_new_music = 1
   						 LIMIT ? 
   						 OFFSET ?`
@@ -71,14 +73,14 @@ app.get(`/api/best-new-music`, cors(), (req, res, next) => {
   })
 })
 
-app.get(`/api/search`, cors(), (req, res, next) => {
-  let { query = '', limit = 50, page = 1 } = req.query
+app.get(`/api/search`, (req, res, next) => {
+  let { query = '', limit = 48, page = 1 } = req.query
 
   limit = parseInt(limit)
   page = (parseInt(page) - 1) * limit
 
   const sql = `SELECT * FROM reviews 
-               JOIN genres on reviews.reviewid = genres.reviewid
+               JOIN genres ON reviews.reviewid = genres.reviewid
                WHERE title LIKE ? OR artist LIKE ?
                LIMIT ? 
                OFFSET ?`
@@ -99,8 +101,8 @@ app.get(`/api/search`, cors(), (req, res, next) => {
   })
 })
 
-app.get(`/api/authors/:author`, cors(), (req, res, next) => {
-  let { author = '', limit = 50, page = 1 } = req.query
+app.get(`/api/authors/:author`, (req, res, next) => {
+  let { author = '', limit = 48, page = 1 } = req.query
 
   limit = parseInt(limit)
   page = (parseInt(page) - 1) * limit
@@ -111,6 +113,96 @@ app.get(`/api/authors/:author`, cors(), (req, res, next) => {
                OFFSET ?`
 
   const params = [author, limit, page]
+  
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({
+        'error': err.message
+      })
+      return
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    })
+  })
+})
+
+db.on('trace', str => {
+  console.log('trace', str)
+})
+
+app.get(`/api/genres`, (req, res, next) => {
+  let { genres = ['electronic', 'metal', 'rock', 'rap', 'experimental', 'pop/r&b', 'folk/country', 'jazz'], 
+        limit = 48, 
+        page = 1
+      } = req.query
+
+  const genresPlaceholder = genres.map(() => '?').join(', ')
+  limit = parseInt(limit)
+  page = (parseInt(page) - 1) * limit
+
+  const sql = `SELECT * FROM reviews 
+               JOIN genres ON reviews.reviewid = genres.reviewid
+               WHERE genres.genre IN (${genresPlaceholder})
+               LIMIT ? 
+               OFFSET ?`
+
+  const params = [...genres, limit, page]
+  
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      console.log(err)
+      res.status(400).json({
+        'error': err.message
+      })
+      return
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    })
+  })
+})
+
+app.get(`/api/reviews/:reviewid`, (req, res, next) => {
+  let { reviewid } = req.query
+
+  reviewid = parseInt(reviewid)
+
+  const sql = `SELECT * FROM reviews
+               JOIN genres ON reviews.reviewid = genres.reviewid
+               JOIN content ON reviews.reviewid = content.reviewid 
+               WHERE reviews.reviewid = ?`
+
+  const params = [reviewid]
+  
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({
+        'error': err.message
+      })
+      return
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    })
+  })
+})
+
+app.get(`/api/colors`, (req, res, next) => {
+  let { limit = 48, page = 1 } = req.query
+
+  limit = parseInt(limit)
+  page = (parseInt(page) - 1) * limit
+
+  const sql = `SELECT * FROM reviews 
+               JOIN genres ON reviews.reviewid = genres.reviewid
+               LIMIT ? 
+               OFFSET ?`
+
+  const params = [limit, page]
   
   db.all(sql, params, (err, rows) => {
     if (err) {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import ReviewList from '../components/ReviewList'
 import useSearch from '../hooks/useSearch.js'
@@ -9,6 +9,10 @@ function Search() {
 
   const history = useHistory()
   const search = history.location.search.slice(1)
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [search])
 
 	const { reviews, hasMore, loading, error } = useSearch(search, currentPage)
 

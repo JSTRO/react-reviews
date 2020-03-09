@@ -7,7 +7,7 @@ export default function useAPI(url, params) {
 	const [error, setError] = useState(false)
 	const [reviews, setReviews] = useState([])
 	const [hasMore, setHasMore] = useState(false)
-
+	
 	const baseURL = 'http://localhost:3000/api'
 
 	useEffect(() => {
@@ -34,7 +34,7 @@ export default function useAPI(url, params) {
 			setError(true)
 		})
 		return () => cancel()
-	}, Object.values(params).concat(url))
+	}, [...Object.values(params), url])
 
 	return {loading, error, hasMore, reviews, setReviews}
 }

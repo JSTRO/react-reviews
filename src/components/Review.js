@@ -7,7 +7,7 @@ import '../App.css'
 
 function Review({review}) {
 
-	const {artist, title, pub_date, url, review_img, genre, author} = review
+	const {reviewid, artist, title, pub_date, review_img, genre, author} = review
 	const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
 
 	const date = new Date(pub_date)
@@ -30,15 +30,23 @@ function Review({review}) {
 
 	return (
 		<div className="grid-item">
-			<a href={url} target="blank">
+			<Link to={`/reviews/${reviewid}`}>
 				<img src={src} alt={review_img} onError={onImageError}></img>
-				<p><strong>{startCase(toLower(artist))}</strong></p>
-				<p><i>{startCase(toLower(title))}</i></p>
-			</a>
+				<p>
+					<strong>{startCase(toLower(artist))}</strong>
+				</p>
+				<p>
+					<i>{startCase(toLower(title))}</i>
+				</p>
+			</Link>
 			<ThemeProvider theme={theme}>
-				<Typography variant="subtitle2"><strong>{toUpper(genre)}</strong></Typography>
+				<Typography variant="subtitle2">
+					<strong>{toUpper(genre)}</strong>
+				</Typography>
 				<Link to={`/authors/${author}`}>
-					<Typography variant="subtitle2"><strong>{toUpper(`By: ${author}`)}</strong></Typography>
+					<Typography variant="subtitle2">
+						<strong>{toUpper(`By: ${author}`)}</strong>
+					</Typography>
 				</Link>
 				<Typography color="textSecondary" variant="subtitle2">
 					{toUpper(date.toLocaleDateString("en-US", dateOptions))}

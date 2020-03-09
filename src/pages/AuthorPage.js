@@ -7,6 +7,8 @@ function AuthorPage() {
 
   const [currentPage, setCurrentPage] = useState(1)
 
+  console.log(author)
+
 	return (
 		<Author
       author={author}

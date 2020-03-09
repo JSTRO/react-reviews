@@ -3,7 +3,7 @@ import useAPI from './useAPI.js'
 
 export default function useSearch(query, pageNumber) {
 
-	const result = useAPI('/search', { query: query, page: pageNumber, limit: 48 })
+	const result = useAPI('/search', { query: query, page: pageNumber })
 
 	useEffect(() => {
 		result.setReviews([])

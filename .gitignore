@@ -18,9 +18,16 @@
 .env.test.local
 .env.production.local
 
+# files
+ColorPage.js
+Colors.js
+useColors.js
 MenuItem.js
 ideas.txt
 misc.js
+
+# folders
+/archive
 
 npm-debug.log*
 yarn-debug.log*
