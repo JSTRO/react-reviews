@@ -40,7 +40,6 @@ function GenreCard({currentPage}) {
   const genreMap = new Map(genreArray.map(genre => ([genre, false])))
 
   const [genres, setGenres] = useState(genreMap)
-  const [genreParams, setGenreParams] = useState([])
 
   let queryString = ''
   let queryArr = []

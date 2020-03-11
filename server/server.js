@@ -172,7 +172,8 @@ app.get(`/api/reviews/:reviewid`, (req, res, next) => {
 
   const sql = `SELECT * FROM reviews
                JOIN genres ON reviews.reviewid = genres.reviewid
-               JOIN content ON reviews.reviewid = content.reviewid 
+               JOIN content ON reviews.reviewid = content.reviewid
+               JOIN labels ON reviews.reviewid = labels.reviewid  
                WHERE reviews.reviewid = ?`
 
   const params = [reviewid]

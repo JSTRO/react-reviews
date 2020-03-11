@@ -10,12 +10,15 @@ export default makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
-    color: 'inherit'
+    color: 'inherit',
   },
   typography: {
     subtitle1: {
       fontSize: 10,
     },
+  },
+  appBar: {
+    backgroundColor: 'black'
   },
   search: {
     position: 'relative',
@@ -41,7 +44,7 @@ export default makeStyles(theme => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    color: '#ffffff',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),

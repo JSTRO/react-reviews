@@ -1,3 +1,8 @@
+body {
+  font-family: Helvetica;
+  font-weight: 200;
+}
+
 h3 {
   text-align: left;
   margin-left: 20px
@@ -28,7 +33,6 @@ a {
   max-width: 120px;
   height: auto;
   margin: 40px;
-  text-align: center
 }
 
 .grid-item-colors {
@@ -42,16 +46,45 @@ a {
   margin: 100px;
 }
 
-.page {
-  margin-top: 100px;
-  text-align: center;
-}
-
 .author-type {
   text-align: center;
   color: gray;
 }
 
-.review-text {
-  margin: 0px 300px;
+.review-text-container {
+  display: grid;
+  background: #eee;
+}
+
+.review-text-panel {
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 4fr 2fr 1fr;
+  grid-auto-rows: minmax(250px, auto);
+  align-items: center;
+  justify-items: center;
+  margin: 6em 2em 0em 2em;
+}
+
+.review-text-artist, .review-text-image {
+  text-align: center;
+}
+
+.review-text-title {
+  font-family: Georgia;
+}
+
+.review-text-image-cover {
+  padding: 1em;
+  max-width: 75%;
+  height: auto;
+}
+
+.review-text-body {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  justify-items: center;
+  margin: 2em 2em 0em 2em;
+  padding-bottom: 7em;
 }

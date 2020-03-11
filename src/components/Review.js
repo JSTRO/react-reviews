@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { startCase, toLower, toUpper } from 'lodash'
+import formatDate from '../utils/formatDate.js'
 import '../App.css'
 
 function Review({review}) {
 
 	const {reviewid, artist, title, pub_date, review_img, genre, author} = review
-	const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
-
-	const date = new Date(pub_date)
 
 	const theme = createMuiTheme({
 	  typography: {
@@ -49,7 +47,7 @@ function Review({review}) {
 					</Typography>
 				</Link>
 				<Typography color="textSecondary" variant="subtitle2">
-					{toUpper(date.toLocaleDateString("en-US", dateOptions))}
+					{toUpper(formatDate(pub_date))}
 				</Typography>
 			</ThemeProvider>	
 		</div>
