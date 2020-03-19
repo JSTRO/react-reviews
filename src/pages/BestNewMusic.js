@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ReviewList from '../components/ReviewList'
-import Divider from '@material-ui/core/Divider'
+import Header from '../components/Header'
 import useBNM from '../hooks/useBNM.js'
 
 function BestNewMusic() {
@@ -9,10 +9,7 @@ function BestNewMusic() {
 
 	return (
     <>
-      <h3 className="review-list-title">BEST NEW MUSIC</h3>
-      <div className="review-list-divider">
-        <Divider variant="middle"/>
-      </div>  
+      <Header title="BEST NEW MUSIC" />   
   		<ReviewList 
         reviews={reviews}
         hasMore={hasMore}

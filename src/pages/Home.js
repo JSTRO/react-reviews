@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import ReviewList from '../components/ReviewList'
+import Header from '../components/Header'
 import Divider from '@material-ui/core/Divider'
 import useAllReviews from '../hooks/useAllReviews.js'
 
@@ -9,10 +10,7 @@ function Home() {
 
 	return (
     <>
-      <h3 className="review-list-title">ALL REVIEWS</h3>
-      <div className="review-list-divider">
-        <Divider variant="middle"/>
-      </div>  
+      <Header title="ALL REVIEWS" />  
   		<ReviewList 
         reviews={reviews}
         hasMore={hasMore}

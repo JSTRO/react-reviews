@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import ReviewList from '../components/ReviewList'
+import Header from '../components/Header'
 import useSearch from '../hooks/useSearch.js'
 
 function Search() {
@@ -15,14 +16,17 @@ function Search() {
 	const { reviews, hasMore, loading, error } = useSearch(search, currentPage)
 
 	return (
-		<ReviewList
-      reviews={reviews}
-      hasMore={hasMore}
-      loading={loading}
-      error={error}
-      currentPage={currentPage}
-      setCurrentPage={setCurrentPage} 
-    /> 
+    <>
+      <Header title="ALL REVIEWS" /> 
+  		<ReviewList
+        reviews={reviews}
+        hasMore={hasMore}
+        loading={loading}
+        error={error}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage} 
+      /> 
+    </>
 	)
 }
 
