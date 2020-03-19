@@ -1,9 +1,11 @@
-import React, {useRef, useCallback} from "react"
+import React, {useRef, useCallback} from 'react'
 import Review from "./Review"
+import { makeStyles } from '@material-ui/core/styles'
 import '../App.css'
 
 function ReviewList({reviews, hasMore, loading, error, setCurrentPage, currentPage}) {
 
+	// Infinite scroll logic
 	const observer = useRef()
 	const lastReviewRef = useCallback(node => {
 		if (loading) {
@@ -22,16 +24,31 @@ function ReviewList({reviews, hasMore, loading, error, setCurrentPage, currentPa
 		}
 	}, [loading, hasMore, setCurrentPage])
 
+	const useStyles = makeStyles(theme => ({
+	  root: {
+	    display: 'flex',
+	    '& > * + *': {
+	      marginLeft: theme.spacing(2),
+	    },
+	  },
+	}));
+
+	const classes = useStyles()
+
 	return (
    	<div className="review-list">
-   		<div>{loading && 'Loading...'}</div>
-   		<div>{error && 'Error'}</div>
+   		<div className={classes.root}>
+   			{loading && "Loading..."}
+   		</div>
+   		<div>{
+   			error && 'Error'}
+   		</div>
 	   	{reviews.map((review, index) => {
 	   		return (
    				<div 
    					ref={reviews.length === index + 1 ? lastReviewRef : null}
    					key={review.reviewid} 
-   					className="grid-container"
+   					className="item-container"
    				>
    					<Review review={review} />
    				</div>

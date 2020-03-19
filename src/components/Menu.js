@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import GenreCard from './GenreCard'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import GenreCard from './GenreCard'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -11,9 +11,7 @@ import useMenuStyles from '../styles/useMenuStyles.js'
 function Menu() {
 
 	const classes = useMenuStyles()
-
   const history = useHistory()
-
   const [currentPage, setCurrentPage] = useState(1)
 
   const handleSearch = event => {
@@ -28,27 +26,22 @@ function Menu() {
 		<div className={classes.root}>
 			<AppBar position="fixed" className={classes.appBar}>
 	      <Toolbar>
-	        <Typography className={classes.title} variant="h6" noWrap>
+	        <Typography className={classes.title} variant="h5" noWrap>
             <Link to="/" className={classes.title}>
 	            Pitchfork <strong>Reviews</strong>
             </Link>
 	        </Typography>
-          <Typography variant="subtitle1" className={classes.title} noWrap>
-            <Link to="/" className={classes.title}>
+          <Typography variant="subtitle1" className={classes.header} noWrap>
+            <Link to="/" className={classes.header}>
               ALL REVIEWS
             </Link>   
           </Typography>
-          <Typography variant="subtitle1" className={classes.title} noWrap>
-            <Link to="/best-new-music" className={classes.title}>
+          <Typography variant="subtitle1" className={classes.header} noWrap>
+            <Link to="/best-new-music" className={classes.header}>
               BEST NEW MUSIC
             </Link>    
           </Typography> 
-          {/*<Typography variant="subtitle1" className={classes.title} noWrap>
-            <Link to="/colors" className={classes.title}>
-              COLORS
-            </Link>   
-          </Typography>*/}
-          <GenreCard currentPage={currentPage}/>  
+          <GenreCard currentPage={currentPage}/>    
 	        <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

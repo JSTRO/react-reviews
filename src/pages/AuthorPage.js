@@ -1,13 +1,10 @@
-import React, {useState} from 'react'
-import {useParams} from 'react-router-dom'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Author from '../components/Author'
 
-function AuthorPage() {
+function AuthorPage() { 
   const {author} = useParams()
-
   const [currentPage, setCurrentPage] = useState(1)
-
-  console.log(author)
 
 	return (
 		<Author

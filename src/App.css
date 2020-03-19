@@ -1,11 +1,11 @@
 body {
-  font-family: Helvetica;
-  font-weight: 200;
+  font-weight: 300;
+  height: 100%;
 }
 
 h3 {
   text-align: left;
-  margin-left: 20px
+  margin: 20px
 }
 
 img {
@@ -19,31 +19,48 @@ a {
   color: black;
 }
 
-.grid-item a:hover {
-  color: #3f51b5;
+li:hover, a:hover, a > h5:hover {
+  color: red;
 }
 
-.grid-container {
+.item-container {
   display: inline-grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: auto;
+  justify-items: center;
 }
 
 .grid-item {
   text-align: center;
-  max-width: 120px;
+  max-width: 160px;
   height: auto;
-  margin: 40px;
+  padding: 20px;
 }
 
 .grid-item-colors {
   text-align: center;
   max-width: 80px;
   height: auto;
-  text-align: center
+}
+
+.review-list-title {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.review-list-divider {
+  position: relative;
+  left: calc(50% - 200px);
+  width: 400px;
+  margin: 40px 0px;
 }
 
 .review-list {
-  margin: 100px;
+  padding: 0px 120px;
+}
+
+.author {
+  padding-top: 100px;
+  text-align: center;
 }
 
 .author-type {
@@ -51,40 +68,136 @@ a {
   color: gray;
 }
 
+.genre-page-filter {
+  display: block;
+  padding: 100px 120px 0px;
+}
+
+.genre-page-filter > p, ul, li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 10px;
+}
+
+.genre-page-filter-item {
+  margin-right: 20px;
+}
+
 .review-text-container {
   display: grid;
-  background: #eee;
+  background: #f8f8f8;
 }
 
 .review-text-panel {
   background: #ffffff;
   display: grid;
-  grid-template-columns: 4fr 2fr 1fr;
+  grid-template-columns: 8fr 4fr 2fr;
   grid-auto-rows: minmax(250px, auto);
   align-items: center;
   justify-items: center;
-  margin: 6em 2em 0em 2em;
+  padding: 40px 40px 60px;
+  margin: 100px 100px 40px 100px;
 }
 
-.review-text-artist, .review-text-image {
+.review-text-artist-title {
+  padding: 0px 40px;
   text-align: center;
 }
 
+.review-text-artist {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .review-text-title {
-  font-family: Georgia;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 48px;
+}
+
+.review-text-image {
+  padding: 12.5px 40px 0px;
+}
+
+.review-text-image > h6 {
+  margin: 0px;
+  color: #b3b3b3;
+  text-align: center;
 }
 
 .review-text-image-cover {
-  padding: 1em;
-  max-width: 75%;
+  max-width: 100%;
   height: auto;
+}
+
+.review-text-score {
+  align-items: center;
+  max-width: 100%;
+  height: auto;
+  color: red;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.review-text-score-number {
+  padding: 20px 10px 0px 10px;
+}
+
+.review-text-score-normal {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 50% 0%;
+  border-radius: 50%;
+  border: 0.15em solid black;
+  line-height: 0;
+  color: black;
+  font-size: 52px;
+  text-align: center;
+}
+
+.review-text-score-bnm {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 50% 0%;
+  border-radius: 50%;
+  border: 0.25em solid red;
+  line-height: 0;
+  color: red;
+  font-size: 40px;
+  text-align: center;
+}
+
+.review-text-bnm {
+  text-align: center;
+  padding-left: 15px;
 }
 
 .review-text-body {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  align-items: center;
   justify-items: center;
-  margin: 2em 2em 0em 2em;
-  padding-bottom: 7em;
+  align-items: inherit;
+  padding: 0px 20px 0px 20px;
+}
+
+.review-text-pub-date, .review-text-author-type {
+  color: #b3b3b3;
+}
+
+#review-text-genre {
+  margin: 10px 0px;
+}
+
+.review-text-author {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.review-text-author > h5 {
+  margin: 0px;
+}
+
+.review-text-text {
+  display: inline-block;
+  max-width: 100%;
+  padding-right: 200px;
+  font-size: 24px;
 }

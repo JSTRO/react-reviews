@@ -10,12 +10,21 @@ export default makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
-    color: 'inherit',
+    color: '#fff',
+    '&:hover': {
+      color: fade(theme.palette.common.white, 1)
+    }
   },
-  typography: {
-    subtitle1: {
-      fontSize: 10,
+  header: {
+    flexGrow: 1,
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
     },
+    color: '#b3b3b3',
+    '&:hover': {
+      color: fade(theme.palette.common.white, 1)
+    }
   },
   appBar: {
     backgroundColor: 'black'

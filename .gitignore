@@ -23,6 +23,8 @@ ColorPage.js
 Colors.js
 useColors.js
 MenuItem.js
+getQueryStringFromMap.js
+capitalizeFirst.js
 ideas.txt
 misc.js
 

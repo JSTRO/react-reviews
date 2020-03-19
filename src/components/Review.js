@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { startCase, toLower, toUpper } from 'lodash'
 import formatDate from '../utils/formatDate.js'
+import titleCase from 'title'
 import '../App.css'
 
 function Review({review}) {
@@ -31,10 +32,10 @@ function Review({review}) {
 			<Link to={`/reviews/${reviewid}`}>
 				<img src={src} alt={review_img} onError={onImageError}></img>
 				<p>
-					<strong>{startCase(toLower(artist))}</strong>
+					<strong>{titleCase(artist)}</strong>
 				</p>
 				<p>
-					<i>{startCase(toLower(title))}</i>
+					<i>{titleCase(title)}</i>
 				</p>
 			</Link>
 			<ThemeProvider theme={theme}>

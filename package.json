@@ -24,7 +24,8 @@
     "react-scripts": "3.3.0",
     "react-text-truncate": "^0.16.0",
     "resemblejs": "^3.2.4",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "title": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
