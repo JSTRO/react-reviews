@@ -30,31 +30,38 @@ function ReviewList({reviews, hasMore, loading, error, setCurrentPage, currentPa
 	    '& > * + *': {
 	      marginLeft: theme.spacing(2),
 	    },
+	    marginLeft: '140px'
 	  },
 	}));
 
 	const classes = useStyles()
 
 	return (
-   	<div className="review-list">
-   		<div className={classes.root}>
-   			{loading && "Loading..."}
-   		</div>
-   		<div>{
-   			error && 'Error'}
-   		</div>
-	   	{reviews.map((review, index) => {
-	   		return (
-   				<div 
-   					ref={reviews.length === index + 1 ? lastReviewRef : null}
-   					key={review.reviewid} 
-   					className="item-container"
-   				>
-   					<Review review={review} />
-   				</div>
-   			)
-	   	})}
-		</div>
+   	<>
+   		{loading &&
+	   		<div className={classes.root}>
+	   			Loading...
+	   		</div>
+	   	}
+	   	{error && 
+	   		<div>
+	   			error && 'Error'
+	   		</div>
+   		}
+   		<div className="review-list-container">
+		   	{reviews.map((review, index) => {
+		   		return (
+	   				<div 
+	   					ref={reviews.length === index + 1 ? lastReviewRef : null}
+	   					key={review.reviewid}
+	   					className="review-list-item" 
+	   				>
+	   					<Review review={review} />
+	   				</div>
+	   			)
+		   	})}
+		  </div> 	
+		</>
 	)
 }
 

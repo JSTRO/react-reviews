@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import ReviewList from '../components/ReviewList'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import Button from '@material-ui/core/Button'
 import useGenre from '../hooks/useGenre.js'
 import getQueryStringFromArray from '../utils/getQueryStringFromArray'
@@ -47,7 +48,10 @@ function GenrePage() {
               return (
                 <li key={genre} className="genre-page-filter-item">
                   <Button variant="outlined" onClick={handleClick} value={genre}>
-                    <strong>{`X ${genre}`}</strong>
+                    <HighlightOffIcon style={{marginRight: "0.25em"}}/> 
+                    <strong>  
+                      {`${genre}`}
+                    </strong>
                   </Button>  
                 </li>
               )

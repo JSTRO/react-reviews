@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ReviewList from '../components/ReviewList'
 import Header from '../components/Header'
-import Divider from '@material-ui/core/Divider'
 import useAllReviews from '../hooks/useAllReviews.js'
 
 function Home() {

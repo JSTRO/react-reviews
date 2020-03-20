@@ -28,7 +28,7 @@ function Review({review}) {
 	let src = error ? 'https://via.placeholder.com/150' : review_img
 
 	return (
-		<div className="grid-item">
+		<>
 			<Link to={`/reviews/${reviewid}`}>
 				<img src={src} alt={review_img} onError={onImageError}></img>
 				<p>
@@ -51,7 +51,7 @@ function Review({review}) {
 					{toUpper(formatDate(pub_date))}
 				</Typography>
 			</ThemeProvider>	
-		</div>
+		</>
 	)
 }
 

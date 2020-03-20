@@ -27,7 +27,8 @@ export default makeStyles(theme => ({
     }
   },
   appBar: {
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    position: 'relative',
   },
   search: {
     position: 'relative',
