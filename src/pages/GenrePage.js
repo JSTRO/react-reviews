@@ -42,7 +42,7 @@ function GenrePage() {
 
 	return (
     <div>
-      {genres.length > 0 && 
+      {genres.length > 0 ?
         <div className="genre-page-filter">
           <ul>
             {genres.map(genre => {
@@ -58,9 +58,9 @@ function GenrePage() {
               )
             })}
           </ul> 
-        </div>
+        </div> :
+        <div className="review-list-title"></div>
       }
-      <Header title="ALL REVIEWS" /> 
   		<ReviewList 
         reviews={reviews}
         hasMore={hasMore}
