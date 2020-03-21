@@ -41,7 +41,9 @@ function Menu() {
               BEST NEW MUSIC
             </Link>    
           </Typography> 
-          <GenreCard currentPage={currentPage}/>    
+          <Typography className={classes.header}>
+            <GenreCard currentPage={currentPage}/> 
+          </Typography>    
 	        <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

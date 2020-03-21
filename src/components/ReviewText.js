@@ -71,7 +71,7 @@ function ReviewText() {
 					</div>
 					<div className="review-text-text"> 
 						<TextTruncate
-					    line={3}
+					    line={5}
 					    truncateText="…"
 					    text={content}
 						/>

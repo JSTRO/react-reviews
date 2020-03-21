@@ -5,7 +5,7 @@ body {
 
 img {
   margin: auto;
-  width: 90%;
+  width: 80%;
   height: auto;
 }
 
@@ -25,6 +25,7 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
 .review-list-container {
   display: inline-grid;
   grid-template-columns: repeat(auto-fit, minmax(13.125rem, 1fr));
+  grid-row-gap: 3rem;
   width: 90vw;
   height: auto;
   padding: 0.25rem;
@@ -82,48 +83,6 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
   padding: 2.5rem 2.5rem 3.75rem;
   margin: 6.25rem 6.25rem 2.5rem;
 }
-
-/*@media only screen and (min-width: 992px) {
-  .review-text-panel {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-  .review-text-artist-title {
-    /*float: left;
-    width: 58.33333%
-    grid-column: 1 / span 2;
-  }
-  .review-text-image {
-    float: left;
-    max-width: 50%;
-    width: 25%;
-    margin: 0rem;
-    display: inline-block;
-    position: relative;
-  }
-  .review-text-score {
-    float: right;
-    max-width: 20%;
-    width: 20%;
-  }
-}*/
-
-/*@media (min-width: 768px) {
-  .review-text-image {
-    float: left;
-    max-width: 50%;
-    width: 25%;
-    margin: 0rem;
-    display: inline-block;
-    position: relative;
-  }
-
-  .review-text-score {
-    float: right;
-    width: 25%;
-  }
-}*/
 
 .review-text-artist-title {
   padding: 0rem 4rem;
@@ -188,7 +147,6 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
   grid-template-columns: 1fr 4fr;
   margin:  0rem 6.25rem;
   text-align: left;
-  padding-bottom: 6rem;
 }
 
 .review-text-pub-date, .review-text-author-type {
@@ -217,6 +175,42 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
   padding-right: 12.5rem;
   font-size: 1.5rem;
   line-height: 2.25rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media only screen and (max-width: 900px) {
+  .review-text-panel {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    padding: 0rem;
+    margin: 3.25rem 1rem 1rem;
+    background: #f8f8f8
+  }
+  .review-text-artist-title {
+    grid-column: 1 / span 2;
+  }
+  .review-text-artist {
+    margin: 0rem;
+  }
+  .review-text-title { 
+    margin: 0rem;
+  }
+  .review-text-title > i { 
+    font-size: 80%;
+  }
+  .review-text-text {
+    padding: 0.4rem 0rem 0rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .review-text-body { 
+    margin: 0rem 1rem;
+  }
+  .genre-card {
+    display: none;
+  }
 }
 
 /*.grid-item-colors {

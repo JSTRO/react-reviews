@@ -7,7 +7,6 @@ export default makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
-    display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -60,7 +59,7 @@ export default makeStyles(theme => ({
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: 120,
       '&:focus': {
         width: 200,
