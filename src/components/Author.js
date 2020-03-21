@@ -7,6 +7,8 @@ function Author({author, currentPage, setCurrentPage}) {
 
 	const { reviews, hasMore, loading, error } = useAuthor(author, currentPage)
 
+	console.log(reviews)
+
 	return (
 		<div>
 			<h1 className="author">{titleCase(author)}</h1>

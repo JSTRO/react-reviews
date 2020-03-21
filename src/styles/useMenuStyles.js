@@ -3,6 +3,7 @@ import { fade, makeStyles } from '@material-ui/core/styles'
 export default makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    textAlign: "left"
   },
   title: {
     flexGrow: 1,
@@ -28,7 +29,6 @@ export default makeStyles(theme => ({
   },
   appBar: {
     backgroundColor: 'black',
-    position: 'relative',
   },
   search: {
     position: 'relative',

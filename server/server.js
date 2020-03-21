@@ -108,6 +108,7 @@ app.get(`/api/authors/:author`, (req, res, next) => {
   page = (parseInt(page) - 1) * limit
 
   const sql = `SELECT * FROM reviews 
+               JOIN genres ON reviews.reviewid = genres.reviewid
                WHERE author = ?
                LIMIT ? 
                OFFSET ?`

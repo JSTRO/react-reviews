@@ -50,12 +50,12 @@ function ReviewText() {
 						<div className={best_new_music === 1 ? "review-text-score-bnm" : "review-text-score-normal"}>
 							<strong className="review-text-score-number">{score && score.toFixed(1)}</strong>
 						</div>
-						{best_new_music === 1 && <h6 className="review-text-bnm">BEST NEW MUSIC</h6>}
+						{best_new_music === 1 && <h6 className="review-text-bnm-label">BEST NEW MUSIC</h6>}
 					</div>
 				</div>		
 				<div className="review-text-body">
-					<div className="review-text-author">
-						<h5>by
+					<div className="review-text-by">
+						<h5 className="review-text-author">by
 							<Link to={`/authors/${author}`}>
 								<strong> {author && titleCase(author)}</strong>
 							</Link>
@@ -71,13 +71,15 @@ function ReviewText() {
 					</div>
 					<div className="review-text-text"> 
 						<TextTruncate
-					    line={6}
+					    line={3}
 					    truncateText="…"
 					    text={content}
 						/>
-						<h4>
-							<a href={url} target="blank">Read the full review</a>
-						</h4>
+						<span>
+							<strong>
+								<a href={url} target="blank">Read the full review</a>
+							</strong>
+						</span>
 					</div>	
 				</div>	
 			</div>

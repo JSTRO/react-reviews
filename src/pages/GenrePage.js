@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import ReviewList from '../components/ReviewList'
+import Header from '../components/Header'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import Button from '@material-ui/core/Button'
 import useGenre from '../hooks/useGenre.js'
@@ -41,7 +42,7 @@ function GenrePage() {
 
 	return (
     <div>
-      {genres.length > 0 ? 
+      {genres.length > 0 && 
         <div className="genre-page-filter">
           <ul>
             {genres.map(genre => {
@@ -57,9 +58,9 @@ function GenrePage() {
               )
             })}
           </ul> 
-        </div> :
-        <div className="review-list-title"></div>
+        </div>
       }
+      <Header title="ALL REVIEWS" /> 
   		<ReviewList 
         reviews={reviews}
         hasMore={hasMore}
