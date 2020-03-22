@@ -178,6 +178,9 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
 }
 
 @media only screen and (max-width: 900px) {
+  .review-list-container {
+    grid-template-columns: repeat(auto-fit, minmax(13.125rem, 1fr));
+  }
   .review-text-container {
     padding: 1rem 1rem
   }
