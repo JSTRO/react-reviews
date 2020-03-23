@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import ReviewList from '../components/ReviewList'
-import Header from '../components/Header'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import Button from '@material-ui/core/Button'
 import useGenre from '../hooks/useGenre.js'
