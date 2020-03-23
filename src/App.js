@@ -6,12 +6,10 @@ import BestNewMusic from './pages/BestNewMusic'
 import Search from './pages/Search'
 import AuthorPage from './pages/AuthorPage'
 import ReviewPage from './pages/ReviewPage'
-import ColorPage from './pages/ColorPage'
 import GenrePage from './pages/GenrePage'
 import './App.css'
 
 function App() {
-
   return (
     <>
       <Router>
@@ -30,9 +28,6 @@ function App() {
           </Route>
           <Route exact path="/authors/:author">
             <AuthorPage />
-          </Route>
-          <Route exact path="/colors">
-            <ColorPage />
           </Route>
           <Route exact path="/search">
             <Search />
