@@ -17,6 +17,7 @@ let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
 })
 
 app.use(cors())
+app.use(express.static(path.join(__dirname, '../build')))
 
 app.get(`/api`, (req, res, next) => {
   let { limit = 48, page = 1 } = req.query
