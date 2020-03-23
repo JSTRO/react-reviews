@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/2903ad42-34c1-4b1a-80b7-87c1c8a0a5c0/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/react-pitchfork-reviews",
+    "appService.deploySubpath": ""
+}
