@@ -3,7 +3,7 @@ import { fade, makeStyles } from '@material-ui/core/styles'
 export default makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    textAlign: "left"
+    
   },
   title: {
     flexGrow: 1,
@@ -13,7 +13,11 @@ export default makeStyles(theme => ({
     color: '#fff',
     '&:hover': {
       color: fade(theme.palette.common.white, 1)
-    }
+    },
+    fontFamily: 'Helvetica',
+    fontSize: '1.5rem',
+    padding: '0.25rem',
+    textAlign: "left"
   },
   header: {
     flexGrow: 1,
@@ -24,7 +28,10 @@ export default makeStyles(theme => ({
     color: '#b3b3b3',
     '&:hover': {
       color: fade(theme.palette.common.white, 1)
-    }
+    },
+    fontFamily: 'Helvetica',
+    fontWeight: '500',
+    padding: '0rem 0.5rem',
   },
   appBar: {
     backgroundColor: 'black',

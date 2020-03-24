@@ -26,21 +26,15 @@ function Menu() {
 		<div className={classes.root}>
 			<AppBar position="fixed" className={classes.appBar}>
 	      <Toolbar variant="dense">
-	        <Typography className={classes.title} variant="h5" noWrap>
-            <Link to="/" className={classes.title}>
-	            Pitchfork <strong>Reviews</strong>
-            </Link>
-	        </Typography>
-          <Typography variant="subtitle1" className={classes.header} noWrap>
-            <Link to="/" className={classes.header}>
-              ALL REVIEWS
-            </Link>   
-          </Typography>
-          <Typography variant="subtitle1" className={classes.header} noWrap>
-            <Link to="/best-new-music" className={classes.header}>
-              BEST NEW MUSIC
-            </Link>    
-          </Typography> 
+          <Link to="/" className={classes.title}>
+            Pitchfork <strong>Reviews</strong>
+          </Link>
+          <Link to="/" className={classes.header}>
+            ALL REVIEWS
+          </Link>   
+          <Link to="/best-new-music" className={classes.header}>
+            BEST NEW MUSIC
+          </Link>    
           <Typography className={classes.header}>
             <GenreCard currentPage={currentPage}/> 
           </Typography>    
