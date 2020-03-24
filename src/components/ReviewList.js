@@ -38,29 +38,29 @@ function ReviewList({reviews, hasMore, loading, error, setCurrentPage, currentPa
 
 	return (
    	<>
-   		{
-   			loading ?
+   		{loading &&
 	   		<div className={classes.root}>
 	   			Loading...
-	   		</div> :
-	   		error ? 
+	   		</div>
+	   	}
+	   	{error && 
 	   		<div>
 	   			'Error'
-	   		</div> :
-	   		<div className="review-list-container">
-			   	{reviews.map((review, index) => {
-			   		return (
-		   				<div 
-		   					ref={reviews.length === index + 1 ? lastReviewRef : null}
-		   					key={review.reviewid}
-		   					className="review-list-item" 
-		   				>
-		   					<Review review={review} />
-		   				</div>
-		   			)
-			   	})}
-			  </div>
-		  }	
+	   		</div>
+   		}
+   		<div className="review-list-container">
+		   	{reviews.map((review, index) => {
+		   		return (
+	   				<div 
+	   					ref={reviews.length === index + 1 ? lastReviewRef : null}
+	   					key={review.reviewid}
+	   					className="review-list-item" 
+	   				>
+	   					<Review review={review} />
+	   				</div>
+	   			)
+		   	})}
+		  </div> 	
 		</>
 	)
 }
