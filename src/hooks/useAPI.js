@@ -7,8 +7,6 @@ export default function useAPI(url, params) {
 	const [error, setError] = useState(false)
 	const [reviews, setReviews] = useState([])
 	const [hasMore, setHasMore] = useState(false)
-	
-	const baseURL = 'http://localhost:3000/api'
 
 	useEffect(() => {
 		setLoading(true)
@@ -16,7 +14,7 @@ export default function useAPI(url, params) {
 		let cancel
 		axios({
 			method: 'GET',
-			url: `${baseURL}${url}`,
+			url: url,
 			params: params,
 			cancelToken: new axios.CancelToken(c => cancel = c)
 		})
