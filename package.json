@@ -2,7 +2,6 @@
   "name": "pfork-reviews",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000/api",
   "dependencies": {
     "@material-ui/core": "^4.9.0",
     "@material-ui/icons": "^4.5.1",
@@ -35,6 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001/api",
   "eslintConfig": {
     "extends": "react-app"
   },

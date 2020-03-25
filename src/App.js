@@ -15,7 +15,7 @@ function App() {
       <Router>
         <Menu />  
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/all-reviews">
             <Home />
           </Route>
           <Route exact path="/best-new-music">

@@ -19,7 +19,7 @@ let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
 app.use(cors())
 app.use(express.static(path.join(__dirname, '../build')))
 
-app.get(`/api`, (req, res, next) => {
+app.get(`/api/all-reviews`, (req, res, next) => {
   let { limit = 48, page = 1 } = req.query
 
   limit = parseInt(limit)
@@ -128,10 +128,6 @@ app.get(`/api/authors/:author`, (req, res, next) => {
       data: rows
     })
   })
-})
-
-db.on('trace', str => {
-  console.log('trace', str)
 })
 
 app.get(`/api/genres`, (req, res, next) => {

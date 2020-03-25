@@ -26,10 +26,10 @@ function Menu() {
 		<div className={classes.root}>
 			<AppBar position="fixed" className={classes.appBar}>
 	      <Toolbar variant="dense">
-          <Link to="/" className={classes.title}>
+          <Link to="/all-reviews" className={classes.title}>
             Pitchfork <strong>Reviews</strong>
           </Link>
-          <Link to="/" className={classes.header}>
+          <Link to="/all-reviews" className={classes.header}>
             ALL REVIEWS
           </Link>   
           <Link to="/best-new-music" className={classes.header}>
