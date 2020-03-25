@@ -190,31 +190,4 @@ app.get(`/api/reviews/:reviewid`, (req, res, next) => {
   })
 })
 
-app.get(`/api/colors`, (req, res, next) => {
-  let { limit = 48, page = 1 } = req.query
-
-  limit = parseInt(limit)
-  page = (parseInt(page) - 1) * limit
-
-  const sql = `SELECT * FROM reviews 
-               JOIN genres ON reviews.reviewid = genres.reviewid
-               LIMIT ? 
-               OFFSET ?`
-
-  const params = [limit, page]
-  
-  db.all(sql, params, (err, rows) => {
-    if (err) {
-      res.status(400).json({
-        'error': err.message
-      })
-      return
-    }
-    res.json({
-      message: 'success',
-      data: rows
-    })
-  })
-})
-
 app.listen(port, () => console.log(`App listening on port ${port}!`))

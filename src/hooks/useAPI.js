@@ -19,7 +19,6 @@ export default function useAPI(url, params) {
 			cancelToken: new axios.CancelToken(c => cancel = c)
 		})
 		.then(res => {
-			console.log(res)
 			setReviews(prevReviews => {
 				return uniqBy([...prevReviews, ...res.data.data], 'reviewid')
 			})

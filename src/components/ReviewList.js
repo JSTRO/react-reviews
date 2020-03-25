@@ -45,7 +45,7 @@ function ReviewList({reviews, hasMore, loading, error, setCurrentPage, currentPa
 	   	}
 	   	{error && 
 	   		<div>
-	   			'Error'
+	   			Error
 	   		</div>
    		}
    		<div className="review-list-container">
