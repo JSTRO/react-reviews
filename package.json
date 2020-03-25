@@ -28,13 +28,13 @@
     "title": "^3.4.1"
   },
   "scripts": {
-    "dev": "react-scripts start",
+    "dev": "PORT=3001 react-scripts start",
     "start": "node ./server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:3000",
   "eslintConfig": {
     "extends": "react-app"
   },
