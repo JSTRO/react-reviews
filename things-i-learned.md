@@ -20,47 +20,48 @@ I first built a REST API using Express to host the data. This [tutorial](https:/
 3. The SQL query for the GET method to execute:
 
 		const sql = `SELECT * FROM reviews 
-	            JOIN genres ON reviews.reviewid = genres.reviewid
-	            LIMIT ? 
-	            OFFSET ?`
+			  JOIN genres ON reviews.reviewid = genres.reviewid
+			  LIMIT ? 
+			  OFFSET ?`
 
 4. The specfic parameters to plug into the `?` placeholder in the query above:
 
 		const params = [limit, page]
 
 5. The `all()` method to execute a SQL query with specified parameters and call a function to access all the rows in the result set:
-		  
+
 		db.all(sql, params, (err, rows) => {
 			if (err) {
-			    res.status(400).json({
-			    'error': err.message
-		    })
-		    	return
+				res.status(400).json({
+					'error': err.message
+				})
+				return
 			}
-	    res.json({
-	    	message: 'success',
-	    	data: rows
-	    })
+			res.json({
+				message: 'success',
+				data: rows
+			})
 		})
 
 One interesting challenge I encountered during the API development was with SQL placeholders in the `/api/genres` route. The goal with the SQL query was to retreive all reviews that matched any genres selected from a list of checkboxes in the UI. To accomplish this I planned to use the SQL `WHERE-IN` clause e.g. `WHERE genres.genre IN (rock, rap, pop)`. The challenge, however, was how to insert the subset of genres selected into the parentheses.
 
 The answer was to map over the array of genres and create a `?` placeholder for each genre. I did this without referencing the actual genre element to prevent any risk of SQL injection (even though I already used a placeholder to prevent this and in the case of this app, no security risks exist.) I then joined the array of placeholders with `, ` to match the `WHERE IN` syntax. Finally I spreaded out the array elements so that each genre became its own param and thus matched its corresponding placeholder:
 
-	let { genres = ['electronic', 'metal', 'rock', 'rap', 'experimental', 'pop/r&b', 'folk/country', 'jazz'], 
-        limit = 48, 
-        page = 1
-      } = req.query
+	let { 
+		genres = ['electronic', 'metal', 'rock', 'rap', 'experimental', 'pop/r&b', 'folk/country', 'jazz'], 
+    	limit = 48, 
+        	page = 1
+        } = req.query
 
 	const genresPlaceholder = genres.map(() => '?').join(', ')
 	limit = parseInt(limit)
 	page = (parseInt(page) - 1) * limit
 
 	const sql = `SELECT * FROM reviews 
-               JOIN genres ON reviews.reviewid = genres.reviewid
-               WHERE genres.genre IN (${genresPlaceholder})
-               LIMIT ? 
-               OFFSET ?`
+			JOIN genres ON reviews.reviewid = genres.reviewid
+			WHERE genres.genre IN (${genresPlaceholder})
+			LIMIT ? 
+			OFFSET ?`
 
 	const params = [...genres, limit, page]
 
@@ -129,3 +130,6 @@ My first instinct was to deploy my app on Heroku, but its [ephemeral filesystem]
 
 ### Conclusion
 Recreating Pitchfork's review pages turned out to be a great learning experience in building a fullstack JS app. I learned a lot about the interplay between SQlite, Express, and React, as well as React Hooks and React Router (which I didn't touch on here but maybe will add more about later). The component-based nature of Pitchfork's site lends itself nicely to React and its visual elegance made the end product a satisfying reward.
+
+### Acknowledgements
+*Special thanks to [Matt Brandly](https://github.com/brandly) for all his hours of free consultation on this project and many others!*
