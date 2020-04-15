@@ -81,7 +81,7 @@ In addition to retrieving the necessary data, `useAllReviews()` also passes down
 
 	function ReviewList({reviews, hasMore, loading, error, setCurrentPage, currentPage}) {
 
-		/* Infinite scroll logic */
+		/* Infinite Scroll logic */
 		const observer = useRef()
 		const lastReviewRef = useCallback(node => {
 			if (loading) {
