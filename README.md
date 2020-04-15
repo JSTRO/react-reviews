@@ -4,6 +4,8 @@
 
 ![](./pfork-demo.gif)
 
+I wrote about some things I learned and some resources that helped me create this project [here](./things-i-learned.md).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
