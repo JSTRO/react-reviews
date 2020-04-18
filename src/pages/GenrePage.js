@@ -18,18 +18,21 @@ function GenrePage() {
 
   const queryString = getQueryStringFromArray(genres)
 
-  const handleClick = event => {
-    const {value} = event.currentTarget
-    setGenres(prev => prev.filter(genre => genre !== value))
+  const handleClick = (event) => {
+    const { value } = event.currentTarget
+    setGenres((prev) => prev.filter((genre) => genre !== value))
   }
 
   useEffect(() => {
     history.replace({
-      search: queryString
+      search: queryString,
     })
   }, [queryString])
 
-  const { reviews, setReviews, hasMore, loading, error } = useGenre(genres, currentPage)
+  const { reviews, setReviews, hasMore, loading, error } = useGenre(
+    genres,
+    currentPage
+  )
 
   useEffect(() => {
     setGenres(paramGenre)
@@ -39,37 +42,40 @@ function GenrePage() {
     setReviews([])
   }, [genres])
 
-	return (
+  return (
     <div>
-      {genres.length > 0 ?
+      {genres.length > 0 ? (
         <div className="genre-page-filter">
           <ul>
-            {genres.map(genre => {
+            {genres.map((genre) => {
               return (
                 <li key={genre} className="genre-page-filter-item">
-                  <Button variant="outlined" onClick={handleClick} value={genre}>
-                    <HighlightOffIcon style={{marginRight: "0.25em"}}/> 
-                    <strong>  
-                      {`${genre}`}
-                    </strong>
-                  </Button>  
+                  <Button
+                    variant="outlined"
+                    onClick={handleClick}
+                    value={genre}
+                  >
+                    <HighlightOffIcon style={{ marginRight: '0.25em' }} />
+                    <strong>{`${genre}`}</strong>
+                  </Button>
                 </li>
               )
             })}
-          </ul> 
-        </div> :
+          </ul>
+        </div>
+      ) : (
         <div className="review-list-title"></div>
-      }
-  		<ReviewList 
+      )}
+      <ReviewList
         reviews={reviews}
         hasMore={hasMore}
         loading={loading}
         error={error}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage} 
-      /> 
+        setCurrentPage={setCurrentPage}
+      />
     </div>
-	)
+  )
 }
 
 export default GenrePage

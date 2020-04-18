@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Router>
-        <Menu />  
+        <Menu />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -21,8 +21,7 @@ function App() {
           <Route exact path="/best-new-music">
             <BestNewMusic />
           </Route>
-          <Route exact path="/genres" component={GenrePage}>
-          </Route>
+          <Route exact path="/genres" component={GenrePage}></Route>
           <Route exact path="/reviews/:reviewid">
             <ReviewPage />
           </Route>
@@ -33,7 +32,7 @@ function App() {
             <Search />
           </Route>
         </Switch>
-      </Router>  
+      </Router>
     </>
   )
 }

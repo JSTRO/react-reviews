@@ -9,57 +9,56 @@ import InputBase from '@material-ui/core/InputBase'
 import useMenuStyles from '../styles/useMenuStyles.js'
 
 function Menu() {
-
-	const classes = useMenuStyles()
+  const classes = useMenuStyles()
   const history = useHistory()
   const [currentPage, setCurrentPage] = useState(1)
 
-  const handleSearch = event => {
-    const {value} = event.target
+  const handleSearch = (event) => {
+    const { value } = event.target
     setCurrentPage(1)
     history.replace({
-      search: value
+      search: value,
     })
   }
 
-	return ( 
-		<div className={classes.root}>
-			<AppBar position="fixed" className={classes.appBar}>
-	      <Toolbar variant="dense">
+  return (
+    <div className={classes.root}>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar variant="dense">
           <Link to="/" className={classes.title}>
             Pitchfork <strong>Reviews</strong>
           </Link>
           <Link to="/" className={classes.header}>
             ALL REVIEWS
-          </Link>   
+          </Link>
           <Link to="/best-new-music" className={classes.header}>
             BEST NEW MUSIC
-          </Link>    
+          </Link>
           <Typography className={classes.header}>
-            <GenreCard currentPage={currentPage}/> 
-          </Typography>    
-	        <div className={classes.search}>
+            <GenreCard currentPage={currentPage} />
+          </Typography>
+          <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <Link to="/search"> 
-  	          <InputBase
-  	            placeholder="Search…"
-  	            name="search"
-  	            value={history.search}
-  	            onChange={handleSearch}
-  	            classes={{
-  	              root: classes.inputRoot,
-  	              input: classes.inputInput,
-  	            }}
-  	            inputProps={{ 'aria-label': 'search' }}
-  	          />
-            </Link>  
-          </div> 
-	      </Toolbar>
-	    </AppBar>
-	  </div>  
-	)
+            <Link to="/search">
+              <InputBase
+                placeholder="Search…"
+                name="search"
+                value={history.search}
+                onChange={handleSearch}
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Link>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </div>
+  )
 }
 
 export default Menu

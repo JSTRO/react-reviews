@@ -7,19 +7,19 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1)
   const { reviews, hasMore, loading, error } = useAllReviews(currentPage)
 
-	return (
+  return (
     <>
-      <Header title="ALL REVIEWS" />  
-  		<ReviewList 
+      <Header title="ALL REVIEWS" />
+      <ReviewList
         reviews={reviews}
         hasMore={hasMore}
         loading={loading}
         error={error}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage} 
-      /> 
+        setCurrentPage={setCurrentPage}
+      />
     </>
-	)
+  )
 }
 
 export default Home

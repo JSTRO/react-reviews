@@ -5,21 +5,21 @@ import useBNM from '../hooks/useBNM.js'
 
 function BestNewMusic() {
   const [currentPage, setCurrentPage] = useState(1)
-	const { reviews, hasMore, loading, error } = useBNM(currentPage)
+  const { reviews, hasMore, loading, error } = useBNM(currentPage)
 
-	return (
+  return (
     <>
-      <Header title="BEST NEW MUSIC" />   
-  		<ReviewList 
+      <Header title="BEST NEW MUSIC" />
+      <ReviewList
         reviews={reviews}
         hasMore={hasMore}
         loading={loading}
         error={error}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage} 
-      /> 
-    </>  
-	)
+        setCurrentPage={setCurrentPage}
+      />
+    </>
+  )
 }
 
 export default BestNewMusic

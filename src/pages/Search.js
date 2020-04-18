@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {useHistory} from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import ReviewList from '../components/ReviewList'
 import Header from '../components/Header'
 import useSearch from '../hooks/useSearch.js'
@@ -13,21 +13,21 @@ function Search() {
     setCurrentPage(1)
   }, [search])
 
-	const { reviews, hasMore, loading, error } = useSearch(search, currentPage)
+  const { reviews, hasMore, loading, error } = useSearch(search, currentPage)
 
-	return (
+  return (
     <>
-      <Header title="ALL REVIEWS" /> 
-  		<ReviewList
+      <Header title="ALL REVIEWS" />
+      <ReviewList
         reviews={reviews}
         hasMore={hasMore}
         loading={loading}
         error={error}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage} 
-      /> 
+        setCurrentPage={setCurrentPage}
+      />
     </>
-	)
+  )
 }
 
 export default Search

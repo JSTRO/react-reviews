@@ -14,97 +14,102 @@ import { toLower } from 'lodash'
 import getQueryStringFromObject from '../utils/getQueryStringFromObject.js'
 import useGenreCardStyles from '../styles/useGenreCardStyles.js'
 
-const genreArray = ['Electronic', 'Metal', 'Rock', 'Rap', 'Experimental', 'Pop/R&B', 'Folk/Country', 'Jazz']
+const genreArray = [
+  'Electronic',
+  'Metal',
+  'Rock',
+  'Rap',
+  'Experimental',
+  'Pop/R&B',
+  'Folk/Country',
+  'Jazz',
+]
 
 const genreObj = {
-  'electronic': false, 
-  'metal': false, 
-  'rock': false, 
-  'rap': false, 
-  'experimental': false, 
-  'pop/r&b': false, 
-  'folk/country': false, 
-  'jazz': false
+  electronic: false,
+  metal: false,
+  rock: false,
+  rap: false,
+  experimental: false,
+  'pop/r&b': false,
+  'folk/country': false,
+  jazz: false,
 }
 
-function GenreCard({currentPage}) {
-  
+function GenreCard({ currentPage }) {
   const classes = useGenreCardStyles()
   const [genres, setGenres] = useState(genreObj)
   const queryString = getQueryStringFromObject(genres)
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { checked, name } = event.target
-    setGenres({...genres, [name]: checked})
+    setGenres({ ...genres, [name]: checked })
   }
 
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const handleOpen = event => {
+  const handleOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
 
   const handleClose = () => {
     setAnchorEl(null)
   }
-  
-	return (
-		<>
-      <Button 
-      	aria-controls="simple-menu" 
-      	aria-haspopup="true" 
-      	onClick={handleOpen} 
-      	className={classes.button}
+
+  return (
+    <>
+      <Button
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleOpen}
+        className={classes.button}
       >
-        GENRES	 
+        GENRES
         <ExpandMoreIcon />
-      </Button>   
+      </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
         getContentAnchorEl={null}
-    		anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-    		transformOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-      >	
-      	<Grid item xs={6}>
+      >
+        <Grid item xs={6}>
           <div className={classes.root}>
             <FormControl component="fieldset" className={classes.formControl}>
               <FormGroup>
-              	{genreArray.map(genre => {
+                {genreArray.map((genre) => {
                   return (
-                    <MenuItem 
-                      key={genre} 
-                      className={classes.menuItem} 
-                    >
+                    <MenuItem key={genre} className={classes.menuItem}>
                       <FormControlLabel
-                        control={ 
-                          <Checkbox 
+                        control={
+                          <Checkbox
                             name={toLower(genre)}
-                            checked={genres[toLower(genre)]} 
-                            onChange={handleChange} 
+                            checked={genres[toLower(genre)]}
+                            onChange={handleChange}
                           />
                         }
                         label={genre}
                       />
-                    </MenuItem>  
-                  ) 
+                    </MenuItem>
+                  )
                 })}
-              <MenuItem>
-                <Button 
-                  variant="outlined"
-                  component={Link}
-                  to={`/genres?${queryString}`}
-                >
-                  <RefreshIcon style={{marginRight: "0.5em"}}/>
-                  Update Results
-                </Button>
-              </MenuItem>  
+                <MenuItem>
+                  <Button
+                    variant="outlined"
+                    component={Link}
+                    to={`/genres?${queryString}`}
+                  >
+                    <RefreshIcon style={{ marginRight: '0.5em' }} />
+                    Update Results
+                  </Button>
+                </MenuItem>
               </FormGroup>
             </FormControl>
-          </div>  
+          </div>
         </Grid>
       </Menu>
     </>
