@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import BestNewMusic from './pages/BestNewMusic'
 import Search from './pages/Search'
 import AuthorPage from './pages/AuthorPage'
+import ArtistPage from './pages/ArtistPage'
 import ReviewPage from './pages/ReviewPage'
 import GenrePage from './pages/GenrePage'
 import './App.css'
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/authors/:author">
             <AuthorPage />
+          </Route>
+          <Route exact path="/artists/:artist">
+            <ArtistPage />
           </Route>
           <Route exact path="/search">
             <Search />
