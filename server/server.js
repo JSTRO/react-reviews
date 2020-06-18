@@ -54,9 +54,9 @@ app.get(`/api/best-new-music`, (req, res, next) => {
 
   const sql = `SELECT * FROM reviews 
                JOIN genres ON reviews.reviewid = genres.reviewid
-               WHERE best_new_music = 1
-               LIMIT ? 
-               OFFSET ?`
+  						 WHERE best_new_music = 1
+  						 LIMIT ? 
+  						 OFFSET ?`
 
   const params = [limit, page]
 
@@ -130,34 +130,6 @@ app.get(`/api/authors/:author`, (req, res, next) => {
   })
 })
 
-app.get(`/api/artists/:artist`, (req, res, next) => {
-  let { artist = '', limit = 48, page = 1 } = req.query
-
-  limit = parseInt(limit)
-  page = (parseInt(page) - 1) * limit
-
-  const sql = `SELECT * FROM reviews 
-               JOIN genres ON reviews.reviewid = genres.reviewid
-               WHERE artist = ?
-               LIMIT ? 
-               OFFSET ?`
-
-  const params = [artist, limit, page]
-
-  db.all(sql, params, (err, rows) => {
-    if (err) {
-      res.status(400).json({
-        error: err.message,
-      })
-      return
-    }
-    res.json({
-      message: 'success',
-      data: rows,
-    })
-  })
-})
-
 app.get(`/api/genres`, (req, res, next) => {
   let {
     genres = [
@@ -187,8 +159,6 @@ app.get(`/api/genres`, (req, res, next) => {
   const params = [...genres, limit, page]
 
   db.all(sql, params, (err, rows) => {
-    res.redirect('http:/google.com')
-
     if (err) {
       console.log(err)
       res.status(400).json({

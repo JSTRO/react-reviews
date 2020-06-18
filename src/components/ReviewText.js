@@ -39,9 +39,7 @@ function ReviewText() {
         <div className="review-text-panel">
           <div className="review-text-artist-title">
             <h1 className="review-text-artist">
-              <Link to={`/artists/${artist}`}>
-                {artist && titleCase(artist)}
-              </Link>
+              {artist && titleCase(artist)}
             </h1>
             <h1 className="review-text-title">
               <i>{title && titleCase(title)}</i>

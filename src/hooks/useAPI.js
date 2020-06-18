@@ -20,7 +20,6 @@ export default function useAPI(url, params) {
     })
       .then((res) => {
         setReviews((prevReviews) => {
-          console.log(res.data)
           return uniqBy([...prevReviews, ...res.data.data], 'reviewid')
         })
         setHasMore(res.data.data.length > 0)
