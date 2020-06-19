@@ -2,7 +2,7 @@ import React from 'react'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import Button from '@material-ui/core/Button'
 
-function GenrePage({ genres, setGenres }) {
+function GenreButtons({ genres, setGenres }) {
   const handleClick = (event) => {
     const { value } = event.currentTarget
     setGenres((prev) => prev.filter((genre) => genre !== value))
@@ -26,4 +26,4 @@ function GenrePage({ genres, setGenres }) {
   )
 }
 
-export default GenrePage
+export default GenreButtons

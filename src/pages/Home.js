@@ -1,29 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { useLocation, useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import GenreButtons from '../components/GenreButtons'
 import ReviewList from '../components/ReviewList'
 import Header from '../components/Header'
 import useAllReviews from '../hooks/useAllReviews.js'
-import getQueryStringFromArray from '../utils/getQueryStringFromArray'
+import useGenreFilter from '../hooks/useGenreFilter.js'
 
 function Home() {
-  // EXTRACT TO HOOK
-  const location = useLocation()
-  const history = useHistory()
-
-  const params = new URLSearchParams(location.search.slice(1))
-  const paramGenre = params.getAll('genre')
-
-  const [genres, setGenres] = useState(paramGenre)
-  const [currentPage, setCurrentPage] = useState(1)
-
-  const queryString = getQueryStringFromArray(genres)
-
-  useEffect(() => {
-    history.replace({
-      search: queryString,
-    })
-  }, [queryString])
+  const { genres, setGenres, currentPage, setCurrentPage } = useGenreFilter()
 
   const { reviews, setReviews, hasMore, loading, error } = useAllReviews(
     genres,
@@ -31,15 +14,11 @@ function Home() {
   )
 
   useEffect(() => {
-    setGenres(paramGenre)
-  }, [paramGenre.join(',')])
-
-  useEffect(() => {
     setReviews([])
   }, [genres])
 
   return (
-    <>
+    <div>
       {!genres.length ? (
         <Header title="ALL REVIEWS" />
       ) : (
@@ -53,7 +32,7 @@ function Home() {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-    </>
+    </div>
   )
 }
 
