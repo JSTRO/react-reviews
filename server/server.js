@@ -20,17 +20,32 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, '../build')))
 
 app.get(`/api/all-reviews`, (req, res, next) => {
-  let { limit = 48, page = 1 } = req.query
+  let {
+    genres = [
+      'electronic',
+      'metal',
+      'rock',
+      'rap',
+      'experimental',
+      'pop/r&b',
+      'folk/country',
+      'jazz',
+    ],
+    limit = 48,
+    page = 1,
+  } = req.query
 
+  const genresPlaceholder = genres.map(() => '?').join(', ')
   limit = parseInt(limit)
   page = (parseInt(page) - 1) * limit
 
   const sql = `SELECT * FROM reviews 
                JOIN genres ON reviews.reviewid = genres.reviewid
+               WHERE genres.genre IN (${genresPlaceholder})
                LIMIT ? 
                OFFSET ?`
 
-  const params = [limit, page]
+  const params = [...genres, limit, page]
 
   db.all(sql, params, (err, rows) => {
     if (err) {
@@ -146,51 +161,6 @@ app.get(`/api/artists/:artist`, (req, res, next) => {
 
   db.all(sql, params, (err, rows) => {
     if (err) {
-      res.status(400).json({
-        error: err.message,
-      })
-      return
-    }
-    res.json({
-      message: 'success',
-      data: rows,
-    })
-  })
-})
-
-app.get(`/api/genres`, (req, res, next) => {
-  let {
-    genres = [
-      'electronic',
-      'metal',
-      'rock',
-      'rap',
-      'experimental',
-      'pop/r&b',
-      'folk/country',
-      'jazz',
-    ],
-    limit = 48,
-    page = 1,
-  } = req.query
-
-  const genresPlaceholder = genres.map(() => '?').join(', ')
-  limit = parseInt(limit)
-  page = (parseInt(page) - 1) * limit
-
-  const sql = `SELECT * FROM reviews 
-               JOIN genres ON reviews.reviewid = genres.reviewid
-               WHERE genres.genre IN (${genresPlaceholder})
-               LIMIT ? 
-               OFFSET ?`
-
-  const params = [...genres, limit, page]
-
-  db.all(sql, params, (err, rows) => {
-    res.redirect('http:/google.com')
-
-    if (err) {
-      console.log(err)
       res.status(400).json({
         error: err.message,
       })

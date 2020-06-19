@@ -7,7 +7,6 @@ import Search from './pages/Search'
 import AuthorPage from './pages/AuthorPage'
 import ArtistPage from './pages/ArtistPage'
 import ReviewPage from './pages/ReviewPage'
-import GenrePage from './pages/GenrePage'
 import './App.css'
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
           <Route exact path="/best-new-music">
             <BestNewMusic />
           </Route>
-          <Route exact path="/genres" component={GenrePage}></Route>
           <Route exact path="/reviews/:reviewid">
             <ReviewPage />
           </Route>

@@ -101,7 +101,7 @@ function GenreCard({ currentPage }) {
                   <Button
                     variant="outlined"
                     component={Link}
-                    to={`/genres?${queryString}`}
+                    to={`/?${queryString}`}
                   >
                     <RefreshIcon style={{ marginRight: '0.5em' }} />
                     Update Results
