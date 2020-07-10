@@ -1,6 +1,7 @@
 import React, { useRef, useCallback } from 'react'
 import Review from './Review'
-import { makeStyles } from '@material-ui/core/styles'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import '../App.css'
 
 function ReviewList({
@@ -33,21 +34,13 @@ function ReviewList({
     [loading, hasMore, setCurrentPage]
   )
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      '& > * + *': {
-        marginLeft: theme.spacing(2),
-      },
-      marginLeft: '140px',
-    },
-  }))
-
-  const classes = useStyles()
-
   return (
-    <>
-      {loading && <div className={classes.root}>Loading...</div>}
+    <div>
+      <div className="loading-spinner">
+        {loading && (
+          <FontAwesomeIcon icon={faSpinner} size="2x" className="fa-spin" />
+        )}
+      </div>
       {error && <div>Error</div>}
       <div className="review-list-container">
         {reviews.map((review, index) => {
@@ -62,7 +55,7 @@ function ReviewList({
           )
         })}
       </div>
-    </>
+    </div>
   )
 }
 
