@@ -13,6 +13,8 @@ function ReviewText() {
   const { reviews } = useReviewText(reviewid)
   const [review, setReview] = useState({})
 
+  console.log(useParams())
+
   useEffect(() => {
     setReview(reviews[0])
   }, [reviews])
@@ -40,11 +42,17 @@ function ReviewText() {
           <div className="review-text-artist-title">
             <h1 className="review-text-artist">
               <Link to={`/artists/${artist}`}>
-                {artist && titleCase(artist)}
+                {artist && artist[0] !== artist[0].toUpperCase()
+                  ? titleCase(artist)
+                  : artist}
               </Link>
             </h1>
             <h1 className="review-text-title">
-              <i>{title && titleCase(title)}</i>
+              <i>
+                {title && title[0] !== title[0].toUpperCase()
+                  ? titleCase(title)
+                  : title}
+              </i>
             </h1>
           </div>
           <div className="review-text-image">
