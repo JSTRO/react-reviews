@@ -24,7 +24,7 @@ function Menu() {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar variant="dense">
+        <Toolbar variant="dense" className={classes.toolbar}>
           <Link to="/" className={classes.title}>
             Pitchfork <strong>Reviews</strong>
           </Link>
