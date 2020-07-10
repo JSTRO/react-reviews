@@ -29,11 +29,15 @@ export default makeStyles((theme) => ({
       color: fade(theme.palette.common.white, 1),
     },
     fontFamily: 'Helvetica',
-    fontWeight: '500',
+    fontWeight: '700',
+    fontSize: '14px',
     padding: '0rem 0.5rem',
   },
   appBar: {
     backgroundColor: 'black',
+  },
+  toolbar: {
+    minHeight: '68px',
   },
   search: {
     position: 'relative',
