@@ -4,7 +4,8 @@ body {
 
 img {
   margin: auto;
-  width: 80%;
+  width: 70%;
+  min-width: 170px;
   height: auto;
 }
 
@@ -13,11 +14,15 @@ a {
   color: black;
 }
 
-li:hover, span > svg:hover, a:hover, a > h5:hover {
+li:hover,
+span > svg:hover,
+a:hover,
+a > h5:hover {
   color: red;
 }
 
-#root {
+#root,
+.loading-spinner {
   text-align: center;
 }
 
@@ -27,7 +32,7 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
   grid-row-gap: 3rem;
   width: 90vw;
   height: auto;
-  padding: 0.25rem;
+  padding: 0.75rem;
 }
 
 .review-list-title {
@@ -47,7 +52,6 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
 
 .author-type {
   color: #808080;
-  padding-bottom: 4rem;
 }
 
 .genre-page-filter {
@@ -60,7 +64,8 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
   padding: 0.625px;
 }
 
-.genre-page-filter > ul, li {
+.genre-page-filter > ul,
+li {
   display: inline-block;
   list-style-type: none;
 }
@@ -109,13 +114,16 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
   max-width: 6.25rem;
   color: red;
   font-family: 'Montserrat', sans-serif;
+  position: relative;
+  display: inline-grid;
 }
 
 .review-text-score-number {
   padding: 1.25rem 0.625rem;
 }
 
-.review-text-score-normal, .review-text-score-bnm {
+.review-text-score-normal,
+.review-text-score-bnm {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -144,11 +152,12 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
 .review-text-body {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  margin:  0rem 6.25rem;
+  margin: 0rem 6.25rem;
   text-align: left;
 }
 
-.review-text-pub-date, .review-text-author-type {
+.review-text-pub-date,
+.review-text-author-type {
   color: #b3b3b3;
 }
 
@@ -177,12 +186,12 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
   font-family: 'Montserrat', sans-serif;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 600px) {
   .review-list-container {
     grid-template-columns: repeat(auto-fit, minmax(13.125rem, 1fr));
   }
   .review-text-container {
-    padding: 1rem 1rem
+    padding: 1rem 1rem;
   }
   .review-text-panel {
     display: grid;
@@ -190,8 +199,8 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
     grid-template-rows: 1fr 1fr;
     justify-items: center;
     padding: 0rem;
-    margin: 3.25rem 0rem 0rem;
-    background: #f8f8f8
+    margin: 3.25rem 1rem 0rem;
+    background: #f8f8f8;
   }
   .review-text-artist-title {
     grid-column: 1 / span 2;
@@ -199,11 +208,11 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
   .review-text-artist {
     margin: 0rem;
   }
-  .review-text-title { 
+  .review-text-title {
     margin: 0rem;
     padding: 0rem 1rem;
   }
-  .review-text-title > i { 
+  .review-text-title > i {
     font-size: 80%;
   }
   .review-text-image {
@@ -220,7 +229,7 @@ li:hover, span > svg:hover, a:hover, a > h5:hover {
     font-size: 1rem;
     line-height: 1.5rem;
   }
-  .review-text-body { 
+  .review-text-body {
     margin: 0rem 1rem;
   }
 }
