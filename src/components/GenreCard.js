@@ -23,6 +23,7 @@ const genreArray = [
   'Pop/R&B',
   'Folk/Country',
   'Jazz',
+  'Global',
 ]
 
 const genreObj = {
@@ -34,6 +35,7 @@ const genreObj = {
   'pop/r&b': false,
   'folk/country': false,
   jazz: false,
+  global: false,
 }
 
 function GenreCard({ currentPage }) {
