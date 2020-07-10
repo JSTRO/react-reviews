@@ -4,7 +4,7 @@ const cors = require('cors')
 const sqlite3 = require('sqlite3').verbose()
 
 const path = require('path')
-const dbPath = path.resolve(__dirname, 'reviews.sqlite')
+const dbPath = path.resolve(__dirname, 'reviews_test.sqlite')
 
 const port = process.env.PORT || 3000
 
@@ -30,6 +30,7 @@ app.get(`/api/all-reviews`, (req, res, next) => {
       'pop/r&b',
       'folk/country',
       'jazz',
+      'global',
     ],
     limit = 48,
     page = 1,
@@ -41,7 +42,8 @@ app.get(`/api/all-reviews`, (req, res, next) => {
 
   const sql = `SELECT * FROM reviews 
                JOIN genres ON reviews.reviewid = genres.reviewid
-               WHERE genres.genre IN (${genresPlaceholder})
+               WHERE genres.genre COLLATE NOCASE IN (${genresPlaceholder})
+               ORDER BY pub_date desc
                LIMIT ? 
                OFFSET ?`
 
@@ -70,6 +72,7 @@ app.get(`/api/best-new-music`, (req, res, next) => {
   const sql = `SELECT * FROM reviews 
                JOIN genres ON reviews.reviewid = genres.reviewid
                WHERE best_new_music = 1
+               ORDER BY pub_date DESC
                LIMIT ? 
                OFFSET ?`
 
@@ -98,6 +101,7 @@ app.get(`/api/search`, (req, res, next) => {
   const sql = `SELECT * FROM reviews 
                JOIN genres ON reviews.reviewid = genres.reviewid
                WHERE title LIKE ? OR artist LIKE ?
+               ORDER BY pub_date DESC
                LIMIT ? 
                OFFSET ?`
 
@@ -126,6 +130,7 @@ app.get(`/api/authors/:author`, (req, res, next) => {
   const sql = `SELECT * FROM reviews 
                JOIN genres ON reviews.reviewid = genres.reviewid
                WHERE author = ?
+               ORDER BY pub_date DESC
                LIMIT ? 
                OFFSET ?`
 
@@ -154,6 +159,7 @@ app.get(`/api/artists/:artist`, (req, res, next) => {
   const sql = `SELECT * FROM reviews 
                JOIN genres ON reviews.reviewid = genres.reviewid
                WHERE artist = ?
+               ORDER BY pub_date DESC
                LIMIT ? 
                OFFSET ?`
 
@@ -176,13 +182,14 @@ app.get(`/api/artists/:artist`, (req, res, next) => {
 app.get(`/api/reviews/:reviewid`, (req, res, next) => {
   let { reviewid } = req.query
 
-  reviewid = parseInt(reviewid)
+  reviewid = isNaN(reviewid) ? reviewid : parseInt(reviewid)
 
   const sql = `SELECT * FROM reviews
                JOIN genres ON reviews.reviewid = genres.reviewid
                JOIN content ON reviews.reviewid = content.reviewid
                JOIN labels ON reviews.reviewid = labels.reviewid  
-               WHERE reviews.reviewid = ?`
+               WHERE reviews.reviewid = ?
+               ORDER BY pub_date DESC`
 
   const params = [reviewid]
 
