@@ -6,7 +6,8 @@ export default makeStyles((theme) => ({
   },
   button: {
     color: '#b3b3b3',
-    fontSize: '16px',
+    fontSize: '14px',
+    fontWeight: '700',
     '&:hover': {
       color: theme.palette.common.white,
     },
