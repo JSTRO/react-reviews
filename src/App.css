@@ -161,8 +161,13 @@ li {
   color: #b3b3b3;
 }
 
-#review-text-genre {
+.review-text-genre {
   margin: 0.625rem 0rem;
+}
+
+.review-text-genre-list {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .review-text-by {
@@ -220,9 +225,6 @@ li {
   }
   .review-text-pub-date {
     margin-top: 0rem;
-  }
-  .review-text-genre > h6 {
-    margin-bottom: 0rem;
   }
   .review-text-text {
     padding: 0.4rem 0rem 0rem 1rem;

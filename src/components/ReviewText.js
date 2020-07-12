@@ -13,8 +13,6 @@ function ReviewText() {
   const { reviews } = useReviewText(reviewid)
   const [review, setReview] = useState({})
 
-  console.log(useParams())
-
   useEffect(() => {
     setReview(reviews[0])
   }, [reviews])
@@ -35,6 +33,8 @@ function ReviewText() {
       genre,
       url,
     } = review
+
+    console.log('Hello', genre ? genre.split(' / ').map(el => `_${el}`) : null)
 
     return (
       <div className="review-text-container">
@@ -94,18 +94,24 @@ function ReviewText() {
               {author_type && titleCase(author_type)}
             </h5>
             <div className="review-text-genre">
-              <h6>
-                <span
-                  style={{
-                    color: 'red',
-                    marginRight: '1em',
-                    display: 'inline-block',
-                  }}
-                >
-                  /
-                </span>
-                {toUpper(genre)}
-              </h6>
+              {genre
+                ? genre.split(' / ').map((el) => {
+                    return (
+                      <h6 className="review-text-genre-list">
+                        <span
+                          style={{
+                            color: 'red',
+                            marginRight: '1em',
+                            display: 'inline-block',
+                          }}
+                        >
+                          /
+                        </span>
+                        {toUpper(el)}
+                      </h6>
+                    ) 
+                  })
+                : null}
             </div>
             <h6 className="review-text-pub-date">
               {toUpper(formatDate(pub_date))}
