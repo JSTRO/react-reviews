@@ -11,6 +11,7 @@ function BestNewMusic() {
     <>
       <Header title="BEST NEW MUSIC" />
       <ReviewList
+        BNMPage={true}
         reviews={reviews}
         hasMore={hasMore}
         loading={loading}

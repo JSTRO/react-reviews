@@ -34,8 +34,6 @@ function ReviewText() {
       url,
     } = review
 
-    console.log('Hello', genre ? genre.split(' / ').map(el => `_${el}`) : null)
-
     return (
       <div className="review-text-container">
         <div className="review-text-panel">
@@ -94,24 +92,23 @@ function ReviewText() {
               {author_type && titleCase(author_type)}
             </h5>
             <div className="review-text-genre">
-              {genre
-                ? genre.split(' / ').map((el) => {
-                    return (
-                      <h6 className="review-text-genre-list">
-                        <span
-                          style={{
-                            color: 'red',
-                            marginRight: '1em',
-                            display: 'inline-block',
-                          }}
-                        >
-                          /
-                        </span>
-                        {toUpper(el)}
-                      </h6>
-                    ) 
-                  })
-                : null}
+              {genre &&
+                genre.split(' / ').map((el) => {
+                  return (
+                    <h6 className="review-text-genre-list">
+                      <span
+                        style={{
+                          color: 'red',
+                          marginRight: '1em',
+                          display: 'inline-block',
+                        }}
+                      >
+                        /
+                      </span>
+                      {toUpper(el)}
+                    </h6>
+                  )
+                })}
             </div>
             <h6 className="review-text-pub-date">
               {toUpper(formatDate(pub_date))}

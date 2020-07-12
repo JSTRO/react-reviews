@@ -6,6 +6,7 @@ import '../App.css'
 
 function ReviewList({
   reviews,
+  BNMPage,
   hasMore,
   loading,
   error,
@@ -50,7 +51,7 @@ function ReviewList({
               key={review.reviewid}
               className="review-list-item"
             >
-              <Review review={review} />
+              <Review review={review} BNMPage={BNMPage} />
             </div>
           )
         })}

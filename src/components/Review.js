@@ -7,12 +7,13 @@ import formatDate from '../utils/formatDate.js'
 import titleCase from 'title'
 import '../App.css'
 
-function Review({ review }) {
+function Review({ review, BNMPage }) {
   const {
     reviewid,
     artist,
     title,
     pub_date,
+    best_new_music,
     review_img,
     genre,
     author,
@@ -22,6 +23,10 @@ function Review({ review }) {
     typography: {
       subtitle2: {
         fontSize: 10,
+      },
+      subtitle3: {
+        fontSize: 10,
+        fontColor: 'red',
       },
     },
   })
@@ -50,6 +55,11 @@ function Review({ review }) {
         </p>
       </Link>
       <ThemeProvider theme={theme}>
+        {best_new_music === 1 && !BNMPage && (
+          <Typography variant="subtitle2" color="error" gutterBottom>
+            <strong>{'BEST NEW ALBUM'}</strong>
+          </Typography>
+        )}
         <Typography variant="subtitle2">
           <strong>{toUpper(genre)}</strong>
         </Typography>
