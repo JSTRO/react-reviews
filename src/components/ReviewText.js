@@ -95,7 +95,7 @@ function ReviewText() {
               {genre &&
                 genre.split(' / ').map((el) => {
                   return (
-                    <h6 className="review-text-genre-list">
+                    <h6 className="review-text-genre-list" key={genre}>
                       <span
                         style={{
                           color: 'red',
@@ -115,7 +115,11 @@ function ReviewText() {
             </h6>
           </div>
           <div className="review-text-text">
-            <TextTruncate line={5} truncateText="…" text={content} />
+            <TextTruncate 
+              line={5} 
+              truncateText="…" 
+              text={content} 
+            />
             <span>
               <strong>
                 <a href={url} target="blank">
