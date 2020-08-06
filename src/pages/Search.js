@@ -7,7 +7,7 @@ import useSearch from '../hooks/useSearch.js'
 function Search() {
   const [currentPage, setCurrentPage] = useState(1)
   const history = useHistory()
-  const search = history.location.search.slice(1)
+  const search = decodeURIComponent(history.location.search.slice(1))
 
   useEffect(() => {
     setCurrentPage(1)
