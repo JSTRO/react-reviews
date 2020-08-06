@@ -3,9 +3,7 @@ const app = express()
 const cors = require('cors')
 const sqlite3 = require('sqlite3').verbose()
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
+require('dotenv').config()
 
 const dbURL = process.env.DATABASE_URL
 const port = process.env.PORT || 3000
