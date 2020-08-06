@@ -37,12 +37,12 @@ function ReviewList({
 
   return (
     <div>
-      <div className="loading-spinner">
-        {loading && (
+      {loading ? (
+        <div className="loading-spinner">
           <FontAwesomeIcon icon={faSpinner} size="2x" className="fa-spin" />
-        )}
-      </div>
-      {error && <div>Error</div>}
+        </div>  
+      ) :
+      error ? <div>Error</div> : (
       <div className="review-list-container">
         {reviews.map((review, index) => {
           return (
@@ -56,6 +56,7 @@ function ReviewList({
           )
         })}
       </div>
+      )}
     </div>
   )
 }
