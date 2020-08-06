@@ -4,7 +4,7 @@ body {
 
 img {
   margin: auto;
-  width: 70%;
+  max-width: 70%;
   min-width: 170px;
   height: auto;
 }
@@ -28,15 +28,11 @@ a > h5:hover {
 
 .review-list-container {
   display: inline-grid;
-  grid-template-columns: repeat(6, minmax(13.125rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(13.125rem, 1fr));
   grid-row-gap: 3rem;
   width: 90vw;
   height: auto;
   padding: 0.75rem;
-}
-
-.review-list-title {
-  padding-top: 6.25rem;
 }
 
 .review-list-divider {
@@ -46,11 +42,11 @@ a > h5:hover {
   margin: 2.5rem 0rem;
 }
 
-.author {
+.creator, .review-list-title {
   padding-top: 6.25rem;
 }
 
-.author-type {
+.creator-type {
   color: #808080;
 }
 
@@ -75,6 +71,8 @@ li {
 }
 
 .review-text-container {
+  padding-top: 6.25rem;
+  height: 100%;
   display: grid;
   background: #f8f8f8;
 }
@@ -85,7 +83,7 @@ li {
   align-items: center;
   background: #ffffff;
   padding: 2.5rem 2.5rem 3.75rem;
-  margin: 6.25rem 6.25rem 2.5rem;
+  margin: 0rem 6.25rem 2.5rem 6.25rem;
 }
 
 .review-text-artist-title {
@@ -172,7 +170,7 @@ li {
 
 .review-text-by {
   font-family: 'Montserrat', sans-serif;
-  margin: 0rem;
+  margin: 0rem 1rem 0rem 0rem;
 }
 
 .review-text-author {
@@ -185,18 +183,15 @@ li {
 }
 
 .review-text-text {
-  padding: 0rem 12.5rem 2rem 0rem;
+  padding: 0rem 0rem 6rem 0rem;
   font-size: 1.5rem;
   line-height: 2.25rem;
   font-family: 'Montserrat', sans-serif;
 }
 
 @media only screen and (max-width: 600px) {
-  .review-list-container {
-    grid-template-columns: repeat(auto-fit, minmax(13.125rem, 1fr));
-  }
   .review-text-container {
-    padding: 1rem 1rem;
+    padding: 1.5rem 1.5rem;
   }
   .review-text-panel {
     display: grid;
@@ -204,7 +199,7 @@ li {
     grid-template-rows: 1fr 1fr;
     justify-items: center;
     padding: 0rem;
-    margin: 3.25rem 1rem 0rem;
+    margin: 3.25rem 1rem 2rem 1rem;
     background: #f8f8f8;
   }
   .review-text-artist-title {
@@ -212,10 +207,12 @@ li {
   }
   .review-text-artist {
     margin: 0rem;
+    font-size: 2rem;
   }
   .review-text-title {
     margin: 0rem;
     padding: 0rem 1rem;
+    font-size: 2rem;
   }
   .review-text-title > i {
     font-size: 80%;
@@ -227,7 +224,7 @@ li {
     margin-top: 0rem;
   }
   .review-text-text {
-    padding: 0.4rem 0rem 0rem 1rem;
+    padding: 0.4rem 0rem 6rem 1rem;
     font-size: 1rem;
     line-height: 1.5rem;
   }
