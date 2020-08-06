@@ -7,14 +7,14 @@ import titleCase from 'title'
 function Artist({ artist, currentPage, setCurrentPage }) {
   const { reviews, hasMore, loading, error } = useArtist(artist, currentPage)
 
+  console.log(artist)
+
   return (
     <div>
-      <h1 className="author">
+      <h1 className="creator">
         {artist[0] !== artist[0].toUpperCase() ? titleCase(artist) : artist}
       </h1>{' '}
-      {/* CHANGE CLASS NAME */}
-      <h4 className="author-type">{reviews[0] && reviews[0].genre}</h4>{' '}
-      {/* CHANGE CLASS NAME */}
+      <h4 className="creator-type">{reviews[0] && reviews[0].genre}</h4>{' '}
       <div className="review-list-divider">
         <Divider variant="middle" />
       </div>

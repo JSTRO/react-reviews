@@ -9,8 +9,8 @@ function Author({ author, currentPage, setCurrentPage }) {
 
   return (
     <div>
-      <h1 className="author">{titleCase(author)}</h1>
-      <h4 className="author-type">{reviews[0] && reviews[0].author_type}</h4>
+      <h1 className="creator">{titleCase(author)}</h1>
+      <h4 className="creator-type">{reviews[0] && reviews[0].author_type}</h4>
       <div className="review-list-divider">
         <Divider variant="middle" />
       </div>
