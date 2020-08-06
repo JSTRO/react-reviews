@@ -13,7 +13,7 @@ export default makeStyles((theme) => ({
     '&:hover': {
       color: fade(theme.palette.common.white, 1),
     },
-    fontFamily: 'Helvetica',
+    fontFamily: 'Libre Baskerville',
     fontSize: '1.5rem',
     padding: '0.25rem',
     textAlign: 'left',
