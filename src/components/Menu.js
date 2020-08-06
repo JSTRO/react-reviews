@@ -26,7 +26,7 @@ function Menu() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar variant="dense" className={classes.toolbar}>
           <Link to="/" className={classes.title}>
-            Pitchfork <strong>Reviews</strong>
+            Pitchfork <i>Reviews</i>
           </Link>
           <Link to="/" className={classes.header}>
             ALL REVIEWS
