@@ -9,7 +9,7 @@ const dbURL = process.env.DATABASE_URL
 const port = process.env.PORT || 3000
 
 const path = require('path')
-const dbPath = path.resolve(__dirname, dbURL)
+const dbPath = path.resolve(__dirname, './databases/reviews_test_25July.sqlite')
 
 let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
   if (err) {
