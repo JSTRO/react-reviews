@@ -45,13 +45,11 @@ function Review({ review, BNMPage }) {
         <img src={src} alt={review_img} onError={onImageError}></img>
         <p>
           <strong>
-            {artist[0] !== artist[0].toUpperCase() ? titleCase(artist) : artist}
+            {artist !== artist.toUpperCase() ? titleCase(artist) : artist}
           </strong>
         </p>
         <p>
-          <i>
-            {title[0] !== title[0].toUpperCase() ? titleCase(title) : title}
-          </i>
+          <i>{title !== title.toUpperCase() ? titleCase(title) : title}</i>
         </p>
       </Link>
       <ThemeProvider theme={theme}>
